@@ -6,25 +6,33 @@ import gg.jte.TemplateEngine;
 import gg.jte.TemplateOutput;
 import gg.jte.output.StringOutput;
 import gg.jte.resolve.DirectoryCodeResolver;
+
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 
 import java.sql.*;
-import java.util.Arrays;
-import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) {
-
-        final String url = "jdbc:postgresql://localhost/bdr:5432";
-        final Properties props = new Properties();
-        props.setProperty("user", "bdr");
-        props.setProperty("password", "bdr");
-        try (Connection conn = DriverManager.getConnection(url, props)) {
-            System.out.println(conn.getMetaData().getDatabaseProductVersion());
-        } catch(SQLException e) {
-            System.out.println("Error connecting to database " + Arrays.toString(e.getStackTrace()));
+        Database database = new Database();
+        try {
+            database.connect();
+            for (String arg : args) {
+                switch (arg) {
+                case "--init":
+                    database.init();
+                    break;
+                case "--seed":
+                    database.seed();
+                    break;
+                }
+            }
+        } catch (SQLException | IOException e) {
+            System.err.println(e.getMessage());
+        } finally {
+            database.disconnect();
         }
 
         // Définir le répertoire contenant les fichiers JTE
