@@ -1,6 +1,6 @@
-package ch.heigvd.dai.auth;
+package ch.heigvd.dai.controller;
 
-import ch.heigvd.dai.users.User;
+import ch.heigvd.dai.model.User;
 import io.javalin.http.*;
 import java.util.concurrent.ConcurrentHashMap;
 
