@@ -12,4 +12,8 @@ public class User {
     public String email;
 
     public User() {}
+
+    public void setId(int id) {
+
+    }
 }

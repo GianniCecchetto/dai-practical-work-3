@@ -11,15 +11,15 @@ import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Main {
+    static Connection conn;
     public static void main(String[] args) {
         Javalin app = Javalin.create();
         final String url = "jdbc:postgresql://localhost:5432/bdr?currentSchema=embedded";
         final Properties props = new Properties();
         props.setProperty("user", "bdr");
         props.setProperty("password", "bdr");
-        try (Connection conn = DriverManager.getConnection(url, props)) {
-            System.out.println(conn.getMetaData().getDatabaseProductVersion());
-
+        try  {
+            conn = DriverManager.getConnection(url, props);
             // Controllers
             UsersController usersController = new UsersController(conn);
 

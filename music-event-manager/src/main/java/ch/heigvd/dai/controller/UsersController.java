@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class UsersController {
@@ -62,13 +64,29 @@ public class UsersController {
     }
 
     public void getAll(Context ctx) throws SQLException {
+        if (connection == null || connection.isClosed()) {
+            throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
+        }
         String sql = "SELECT * FROM personne";
+        List<User> users = new ArrayList<>();
 
-        Statement stmt = connection.createStatement();
+        try (Statement stmt = connection.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                User user = new User();
+                user.id = (rs.getInt("id")); // Assurez-vous que les colonnes existent
+                user.nom = (rs.getString("nom"));
+                user.prenom = (rs.getString("prenom"));
+                user.adresse = (rs.getString("adresse"));
+                user.num_tel = (rs.getString("num_tel"));
+                user.email = (rs.getString("email"));
 
-        ResultSet rs = stmt.executeQuery(sql);
+                users.add(user);
+            }
+        }
 
-        ctx.result((InputStream) rs);
+        // Retourner la liste des utilisateurs en réponse JSON
+        ctx.json(users);
     }
 
     public void getOne(Context ctx) throws SQLException {
