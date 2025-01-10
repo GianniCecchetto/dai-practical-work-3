@@ -1,35 +1,38 @@
 package ch.heigvd.dai;
 
-import ch.heigvd.dai.controller.AuthController;
 import ch.heigvd.dai.controller.UsersController;
 import ch.heigvd.dai.model.User;
 import io.javalin.Javalin;
 
+import java.io.InputStream;
+import java.sql.*;
+import java.util.Arrays;
+import java.util.Properties;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class Main {
     public static void main(String[] args) {
         Javalin app = Javalin.create();
+        final String url = "jdbc:postgresql://localhost:5432/bdr?currentSchema=embedded";
+        final Properties props = new Properties();
+        props.setProperty("user", "bdr");
+        props.setProperty("password", "bdr");
+        try (Connection conn = DriverManager.getConnection(url, props)) {
+            System.out.println(conn.getMetaData().getDatabaseProductVersion());
 
-        // This will serve as our database
-        ConcurrentHashMap<Integer, User> users = new ConcurrentHashMap<>();
+            // Controllers
+            UsersController usersController = new UsersController(conn);
 
-        // Controllers
-        AuthController authController = new AuthController(users);
-        UsersController usersController = new UsersController(users);
+            // Users routes
+            app.get("/api/users",usersController::getAll);
+            app.post("/api/users", usersController::create);
+            app.get("/api/users/{id}", usersController::getOne);
+            app.put("/api/users/{id}", usersController::update);
+            app.delete("/api/users/{id}", usersController::delete);
+            app.start(7000);
 
-        // Auth routes
-        app.post("/login", authController::login);
-        app.post("/logout", authController::logout);
-        app.get("/profile", authController::profile);
-
-        // Users routes
-        app.post("/users", usersController::create);
-        app.get("/users", usersController::getMany);
-        app.get("/users/{id}", usersController::getOne);
-        app.put("/users/{id}", usersController::update);
-        app.delete("/users/{id}", usersController::delete);
-
-        app.start(7000);
+        } catch(SQLException e) {
+            System.out.println("Error connecting to database " + Arrays.toString(e.getStackTrace()));
+        }
     }
 }
