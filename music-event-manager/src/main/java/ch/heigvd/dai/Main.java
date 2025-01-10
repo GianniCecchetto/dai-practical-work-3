@@ -11,5 +11,6 @@ public class Main {
         ).start(7000);
 
         app.get("/", ctx -> ctx.render("root.jte"));
+        app.get("/moi", ctx -> ctx.render("moi.jte"));
     }
 }
