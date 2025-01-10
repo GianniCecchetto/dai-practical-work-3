@@ -39,6 +39,11 @@
             <artifactId>javalin-bundle</artifactId>
             <version>6.3.0</version>
         </dependency>
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin-rendering</artifactId>
+            <version>6.3.0</version>
+        </dependency>
     </dependencies>
 
     <build>
