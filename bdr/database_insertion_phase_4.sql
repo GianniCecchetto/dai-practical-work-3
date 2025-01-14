@@ -1,3 +1,5 @@
+SET search_path = embedded;
+
 -- Insérer des données dans la table lieu
 INSERT INTO lieu (nom, adresse, NPA) VALUES
 ('Palais des Congrès', '1 Rue des Expositions', '75001'),
@@ -194,3 +196,111 @@ INSERT INTO spectateur_evenement (evenement_id, spectateur_id, prix) VALUES
 (3, 8, 10.00),
 (4, 9, 100.00),
 (5, 10, 15.00);
+
+-- Vue pour obtenir les événements avec leurs lieux
+CREATE OR REPLACE VIEW vue_evenement_lieu AS
+SELECT
+    e.id AS evenement_id,
+    e.nom AS evenement_nom,
+    e.date_debut,
+    e.date_fin,
+    e.prix_entree,
+    l.nom AS lieu_nom,
+    l.adresse,
+    l.NPA
+FROM evenement e
+JOIN lieu l ON e.lieu_id = l.id;
+
+-- Vue pour obtenir les concerts avec les scènes et groupes
+CREATE OR REPLACE VIEW vue_concert_details AS
+SELECT
+    c.id AS concert_id,
+    c.heure_debut,
+    c.heure_fin,
+    c.necessite_siege,
+    sc.capacite_max,
+    sc.plein_air,
+    g.nom AS groupe_nom,
+    e.nom AS evenement_nom
+FROM concert c
+JOIN scene sc ON c.scene_id = sc.id
+JOIN groupe g ON c.groupe_id = g.id
+JOIN evenement e ON sc.evenement_id = e.id;
+
+-- Vue pour les recettes générées par les événements
+CREATE OR REPLACE VIEW vue_recettes_evenement AS
+SELECT
+    e.id AS evenement_id,
+    e.nom AS evenement_nom,
+    SUM(s.cout) AS recettes_stands,
+    SUM(se.prix) AS recettes_billets
+FROM evenement e
+LEFT JOIN stand s ON s.evenement_id = e.id
+LEFT JOIN spectateur_evenement se ON se.evenement_id = e.id
+GROUP BY e.id, e.nom;
+
+-- Création des triggers
+
+-- Trigger pour vérifier les dates des événements
+CREATE OR REPLACE FUNCTION verif_dates_evenement() RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.date_fin < NEW.date_debut THEN
+        RAISE EXCEPTION 'La date de fin doit être postérieure à la date de début';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_verif_dates_evenement
+BEFORE INSERT OR UPDATE ON evenement
+FOR EACH ROW EXECUTE FUNCTION verif_dates_evenement();
+
+-- Trigger pour vérifier les heures des événements
+CREATE OR REPLACE FUNCTION verif_heures_concert() RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.heure_fin <= NEW.heure_debut THEN
+        RAISE EXCEPTION 'L heure de fin doit être postérieure à l heure de début';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_verif_heures_concert
+BEFORE INSERT OR UPDATE ON concert
+FOR EACH ROW EXECUTE FUNCTION verif_heures_concert();
+
+-- Trigger pour vérifier la capacité des sièges
+CREATE OR REPLACE FUNCTION verif_capacite_siege() RETURNS TRIGGER AS $$
+BEGIN
+    IF (SELECT COUNT(*) FROM siege WHERE concert_id = NEW.concert_id) >=
+       (SELECT capacite_max FROM scene WHERE id = NEW.concert_id) THEN
+        RAISE EXCEPTION 'Capacité maximale de la scène atteinte';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_verif_capacite_siege
+BEFORE INSERT ON siege
+FOR EACH ROW EXECUTE FUNCTION verif_capacite_siege();
+
+-- Création des requêtes
+
+-- Requête pour obtenir les événements par lieu
+SELECT * FROM vue_evenement_lieu WHERE lieu_nom = 'Palais des Congrès';
+
+-- Requête pour les recettes totales d'un événement
+SELECT * FROM vue_recettes_evenement WHERE evenement_nom = 'Festival de Musique';
+
+-- Requête pour obtenir les concerts d'un groupe spécifique
+SELECT * FROM vue_concert_details WHERE groupe_nom = 'The Rockers';
+
+-- Requête pour les concerts nécessitant des sièges
+SELECT * FROM vue_concert_details WHERE necessite_siege = TRUE;
+
+-- Requête pour les spectateurs inscrits à un événement donné
+SELECT sp.nom, sp.prenom, sp.email
+FROM spectateur_evenement se
+JOIN spectateur s ON se.spectateur_id = s.personne_id
+JOIN personne sp ON s.personne_id = sp.id
+WHERE se.evenement_id = (SELECT id FROM evenement WHERE nom = 'Festival de Musique');

@@ -140,7 +140,8 @@ CREATE TABLE personne
     prenom  VARCHAR(255) NOT NULL,
     adresse VARCHAR(255),
     num_tel VARCHAR(15),
-    email   VARCHAR(255) NOT NULL
+    email   VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL
 );
 
 -- Table artiste
