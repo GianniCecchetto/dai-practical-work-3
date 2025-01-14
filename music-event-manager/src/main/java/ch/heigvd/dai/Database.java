@@ -1,7 +1,5 @@
 package ch.heigvd.dai;
 
-import okio.Path;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
