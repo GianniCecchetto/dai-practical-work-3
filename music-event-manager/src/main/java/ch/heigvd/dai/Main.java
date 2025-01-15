@@ -19,7 +19,10 @@ public class Main {
         final Properties props = new Properties();
         props.setProperty("user", "bdr");
         props.setProperty("password", "bdr");
-        try (Connection conn = DriverManager.getConnection(url, props)) {
+        try {
+            // TODO close
+            Connection conn = DriverManager.getConnection(url, props);
+
             // Controllers
             UsersController usersController = new UsersController(conn);
             BenefitsController benefitsController = new BenefitsController(conn);

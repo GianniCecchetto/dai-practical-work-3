@@ -1,6 +1,6 @@
 package ch.heigvd.dai.controller;
 
-import ch.heigvd.dai.model.Benefits;
+import ch.heigvd.dai.model.Benefit;
 import io.javalin.http.Context;
 
 import java.sql.Connection;
@@ -17,10 +17,10 @@ public class BenefitsController {
     public Context getOne(Context ctx) throws SQLException {
         Integer id = ctx.pathParamAsClass("id", Integer.class).get();
 
-        return ctx.render("benefit.jte", Map.of("benefit", Benefits.getBenfit(connection, id)));
+        return ctx.render("benefit.jte", Map.of("benefit", Benefit.getBenefit(connection, id)));
     }
 
     public Context getAll(Context ctx) throws SQLException {
-        return ctx.render("benefits.jte", Map.of("benefits", Benefits.getBenfits(connection)));
+        return ctx.render("benefits.jte", Map.of("benefits", Benefit.getBenefits(connection)));
     }
 }

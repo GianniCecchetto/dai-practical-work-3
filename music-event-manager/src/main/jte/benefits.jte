@@ -1,6 +1,6 @@
-@import ch.heigvd.dai.model.Benefits
+@import ch.heigvd.dai.model.Benefit
 @import java.util.List
-@param List<Benefits> benefits
+@param List<Benefit> benefits
 
 
 <html>
@@ -20,7 +20,7 @@
     </tr>
     </thead>
     <tbody>
-    @for(Benefits benefit : benefits)
+    @for(Benefit benefit : benefits)
     <tr>
         <td>
             <a href="/benefits/${benefit.id()}">${benefit.id()}</a>
