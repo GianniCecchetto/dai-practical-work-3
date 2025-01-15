@@ -2,6 +2,7 @@ package ch.heigvd.dai;
 
 import ch.heigvd.dai.controller.*;
 import ch.heigvd.dai.model.*;
+
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinJte;
 
@@ -29,8 +30,9 @@ public class Main {
 
             // Controllers
             UsersController usersController = new UsersController(conn);
-            EventsController eventsController = new EventsController(conn, events);
 
+            BenefitsController benefitsController = new BenefitsController(conn);
+            GroupEventController groupEventController = new GroupEventController(conn);
             // Users routes
             app.get("/api/users",usersController::getAll);
             app.post("/api/users", usersController::create);
@@ -41,6 +43,10 @@ public class Main {
 
             app.get("/", ctx -> ctx.render("root.jte"));
             app.get("/moi", ctx -> ctx.render("moi.jte", Collections.singletonMap("events", events)));
+
+            app.get("/benefits/{id}", benefitsController::getOne);
+            app.get("/group_event/{id}", groupEventController::getAll);
+
 
             app.start(7000);
         } catch(SQLException e) {
