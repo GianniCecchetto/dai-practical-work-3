@@ -16,9 +16,8 @@ public class EventsController {
     private final Connection connection;
     public Events events;
 
-    public EventsController(Connection connection, Events events) {
+    public EventsController(Connection connection) {
         this.connection = connection;
-        this.events = events;
     }
 
     public void create(Context ctx) throws SQLException {

@@ -12,25 +12,24 @@ import java.util.Arrays;
 import java.util.Properties;
 
 public class Main {
-    static Connection conn;
     public static void main(String[] args) {
         Javalin app = Javalin.create(
                 config -> { config.fileRenderer(new JavalinJte()); }
         );
 
+
         final String url = "jdbc:postgresql://localhost:5432/bdr?currentSchema=embedded";
         final Properties props = new Properties();
         props.setProperty("user", "bdr");
         props.setProperty("password", "bdr");
-        try  {
-            conn = DriverManager.getConnection(url, props);
-
-            Events events = new Events();
-
+        try (Connection conn = DriverManager.getConnection(url, props)) {
             // Controllers
             UsersController usersController = new UsersController(conn);
             EventsController eventsController = new EventsController(conn, events);
             BenefitsController benefitsController = new BenefitsController(conn);
+            GroupEventController groupEventController = new GroupEventController(conn);
+            EventsController eventsController = new EventsController(conn);
+
             StandController standController = new StandController(conn);
             RestaurateurController restaurateurController = new RestaurateurController(conn);
 
@@ -45,13 +44,17 @@ public class Main {
             app.get("/", ctx -> ctx.render("root.jte"));
             app.get("/moi", ctx -> ctx.render("moi.jte", Collections.singletonMap("events", events)));
 
-            app.start(7000);
-
             app.get("/benefits/{id}", benefitsController::getOne);
             app.get("/benefits", benefitsController::getAll);
 
+            app.get("/", ctx -> ctx.render("root.jte"));
+
+            app.get("/group_event/{id}", groupEventController::getAll);
+
             app.get("/stands/{id}", standController::getOne);
             app.get("/restaurateurs/{id}", restaurateurController::getOne);
+
+            app.start(7000);
         } catch(SQLException e) {
             System.out.println("Error connecting to database " + Arrays.toString(e.getStackTrace()));
         }
