@@ -1,5 +1,5 @@
 @import ch.heigvd.dai.model.Benefit
-@param Benefit recette
+@param Benefit benefit
 
 
 <html>
@@ -19,10 +19,10 @@
         </thead>
         <tbody>
             <tr>
-                <td>${recette.id()}</td>
-                <td>${recette.name()}</td>
-                <td>${recette.benefitStand()}</td>
-                <td>${recette.benefitsTickets()}</td>
+                <td>${benefit.id()}</td>
+                <td>${benefit.name()}</td>
+                <td>${benefit.benefitStand()}</td>
+                <td>${benefit.benefitsTickets()}</td>
             </tr>
         </tbody>
     </table>

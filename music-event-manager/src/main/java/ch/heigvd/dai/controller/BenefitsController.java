@@ -17,8 +17,6 @@ public class BenefitsController {
     public Context getOne(Context ctx) throws SQLException {
         Integer id = ctx.pathParamAsClass("id", Integer.class).get();
 
-        System.out.println(Benefit.getRecettes(connection, id));
-
-        return ctx.render("benefits.jte", Map.of("recette", Benefit.getRecettes(connection, id)));
+        return ctx.render("benefits.jte", Map.of("benefit", Benefit.getRecettes(connection, id)));
     }
 }
