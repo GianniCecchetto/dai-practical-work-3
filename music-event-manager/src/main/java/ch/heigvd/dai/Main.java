@@ -25,6 +25,7 @@ public class Main {
             // Controllers
             UsersController usersController = new UsersController(conn);
             BenefitsController benefitsController = new BenefitsController(conn);
+            
 
             // Users routes
             app.get("/api/users",usersController::getAll);
