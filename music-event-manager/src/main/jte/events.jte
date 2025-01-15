@@ -58,6 +58,27 @@
             background-color: #f1f1f1;
         }
 
+        button {
+            padding: 10px 15px;
+            background-color: #ff5900;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #ff4400;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #e63900;
+            transform: translateY(0);
+        }
+
         footer {
             text-align: center;
             margin-top: 20px;
@@ -80,6 +101,7 @@
         <tr>
             <th>Nom de l'Événement</th>
             <th>Dates</th>
+            <th>Details</th>
         </tr>
         </thead>
         <tbody>
@@ -87,8 +109,15 @@
             <tr>
                 <td>${event.name()}</td>
                 <td>${event.beginning().toString()} - ${event.end().toString()}</td>
+                <td> <button onclick="redirectToDetails(${event.id()})">Details</button></td>
             </tr>
         @endfor
+        <script>
+            function redirectToDetails(eventId) {
+                const baseUrl = '/group_event/';
+                window.location.href = baseUrl + eventId;
+            }
+        </script>
         </tbody>
     </table>
 </main>
