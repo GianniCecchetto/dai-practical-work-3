@@ -1,5 +1,5 @@
-@import ch.heigvd.dai.model.Benefits
-@param Benefits benefit
+@import ch.heigvd.dai.model.Benefit
+@param Benefit benefit
 
 <html lang="fr">
 <head>

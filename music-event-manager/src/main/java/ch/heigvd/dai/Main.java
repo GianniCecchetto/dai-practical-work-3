@@ -21,6 +21,7 @@ public class Main {
         props.setProperty("password", "bdr");
         try  {
             Connection conn = DriverManager.getConnection(url, props);
+
             // Controllers
             UsersController usersController = new UsersController(conn);
             BenefitsController benefitsController = new BenefitsController(conn);
@@ -28,26 +29,30 @@ public class Main {
             EventController eventsController = new EventController(conn);
 
 
+            StandController standController = new StandController(conn);
+            RestaurateurController restaurateurController = new RestaurateurController(conn);
 
             // Users routes
+            app.get("/", ctx -> ctx.render("root.jte"));
+
             app.get("/api/users",usersController::getAll);
             app.post("/api/users", usersController::create);
             app.get("/api/users/{id}", usersController::getOne);
             app.put("/api/users/{id}", usersController::update);
             app.delete("/api/users/{id}", usersController::delete);
-
-
             app.get("/api/events", eventsController::getAll);
 
             app.get("/benefits/{id}", benefitsController::getOne);
             app.get("/benefits", benefitsController::getAll);
-            app.get("/", ctx -> ctx.render("root.jte"));
-            app.get("/group_event/{id}", groupEventController::getAll);
 
+            app.get("/group_event/{id}", groupEventController::getAll);
             app.get("/events", eventsController::getAll);
 
-            app.start(7000);
 
+            app.get("/stands/{id}", standController::getOne);
+            app.get("/restaurateurs/{id}", restaurateurController::getOne);
+
+            app.start(7000);
         } catch(SQLException e) {
             System.out.println("Error connecting to database " + Arrays.toString(e.getStackTrace()));
         }
