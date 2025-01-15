@@ -30,6 +30,9 @@ public class Main {
             // Controllers
             UsersController usersController = new UsersController(conn);
             EventsController eventsController = new EventsController(conn, events);
+            BenefitsController benefitsController = new BenefitsController(conn);
+            StandController standController = new StandController(conn);
+            RestaurateurController restaurateurController = new RestaurateurController(conn);
 
             // Users routes
             app.get("/api/users",usersController::getAll);
@@ -43,6 +46,12 @@ public class Main {
             app.get("/moi", ctx -> ctx.render("moi.jte", Collections.singletonMap("events", events)));
 
             app.start(7000);
+
+            app.get("/benefits/{id}", benefitsController::getOne);
+            app.get("/benefits", benefitsController::getAll);
+
+            app.get("/stands/{id}", standController::getOne);
+            app.get("/restaurateurs/{id}", restaurateurController::getOne);
         } catch(SQLException e) {
             System.out.println("Error connecting to database " + Arrays.toString(e.getStackTrace()));
         }
