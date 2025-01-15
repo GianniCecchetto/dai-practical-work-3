@@ -1,6 +1,7 @@
 package ch.heigvd.dai;
 
 import ch.heigvd.dai.controller.*;
+import ch.heigvd.dai.model.DetailEvent;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinJte;
 
@@ -27,7 +28,7 @@ public class Main {
             BenefitsController benefitsController = new BenefitsController(conn);
             GroupEventController groupEventController = new GroupEventController(conn);
             EventController eventsController = new EventController(conn);
-
+            DetailEventController detailEventController = new DetailEventController(conn);
 
             StandController standController = new StandController(conn);
             RestaurateurController restaurateurController = new RestaurateurController(conn);
@@ -47,6 +48,7 @@ public class Main {
 
             app.get("/group_event/{id}", groupEventController::getAll);
             app.get("/events", eventsController::getAll);
+            app.get("/event_detail/{id}", detailEventController::getAll);
 
 
             app.get("/stands/{id}", standController::getOne);
