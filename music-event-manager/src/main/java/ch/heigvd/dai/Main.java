@@ -1,13 +1,11 @@
 package ch.heigvd.dai;
 
 import ch.heigvd.dai.controller.*;
-import ch.heigvd.dai.model.*;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinJte;
-import java.util.Collections;
+
 import java.sql.*;
 import java.util.Arrays;
-import java.util.Map;
 import java.util.Properties;
 
 public class Main {
@@ -21,12 +19,14 @@ public class Main {
         final Properties props = new Properties();
         props.setProperty("user", "bdr");
         props.setProperty("password", "bdr");
-        try (Connection conn = DriverManager.getConnection(url, props)) {
+        try  {
+            Connection conn = DriverManager.getConnection(url, props);
             // Controllers
             UsersController usersController = new UsersController(conn);
             BenefitsController benefitsController = new BenefitsController(conn);
             GroupEventController groupEventController = new GroupEventController(conn);
-            EventsController eventsController = new EventsController(conn);
+            EventController eventsController = new EventController(conn);
+
 
 
             // Users routes
@@ -41,10 +41,10 @@ public class Main {
 
             app.get("/benefits/{id}", benefitsController::getOne);
             app.get("/benefits", benefitsController::getAll);
-
             app.get("/", ctx -> ctx.render("root.jte"));
-
             app.get("/group_event/{id}", groupEventController::getAll);
+
+            app.get("/events", eventsController::getAll);
 
             app.start(7000);
 

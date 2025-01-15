@@ -1,7 +1,6 @@
-
-@import ch.heigvd.dai.model.Group
+@import ch.heigvd.dai.model.Event
 @import java.util.List
-@param List<Group> groups
+@param List<Event> events
 
 
 <html lang="fr">
@@ -19,7 +18,7 @@
         }
 
         header {
-            background-color: #ea710c;
+            background-color: #ff5900;
             color: white;
             padding: 20px;
             text-align: center;
@@ -51,7 +50,7 @@
         }
 
         th {
-            background-color: #ea710c;
+            background-color: #FF4400FF;
             color: white;
         }
 
@@ -63,7 +62,7 @@
             text-align: center;
             margin-top: 20px;
             padding: 10px 0;
-            background-color: #ea710c;
+            background-color: #FF4400FF;
             color: white;
             position: fixed;
             bottom: 0;
@@ -73,23 +72,21 @@
 </head>
 <body>
 <header>
-    <h1>Liste des Groupes des Événements</h1>
+    <h1>Liste des Événements</h1>
 </header>
 <main>
     <table>
         <thead>
         <tr>
-            <th>ID de l'Événement</th>
-            <th>Nom du Groupe</th>
-            <th>Genre de Musique</th>
+            <th>Nom de l'Événement</th>
+            <th>Dates</th>
         </tr>
         </thead>
         <tbody>
-        @for(Group group : groups)
+        @for(Event event : events)
             <tr>
-                <td>${group.id()}</td>
-                <td>${group.name()}</td>
-                <td>${group.genre()}</td>
+                <td>${event.name()}</td>
+                <td>${event.beginning().toString()} - ${event.end().toString()}</td>
             </tr>
         @endfor
         </tbody>
@@ -100,3 +97,4 @@
 </footer>
 </body>
 </html>
+
