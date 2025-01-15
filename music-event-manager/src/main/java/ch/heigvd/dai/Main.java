@@ -1,6 +1,8 @@
 package ch.heigvd.dai;
 
 import ch.heigvd.dai.controller.BenefitsController;
+import ch.heigvd.dai.controller.RestaurateurController;
+import ch.heigvd.dai.controller.StandController;
 import ch.heigvd.dai.controller.UsersController;
 import io.javalin.Javalin;
 
@@ -25,6 +27,8 @@ public class Main {
             // Controllers
             UsersController usersController = new UsersController(conn);
             BenefitsController benefitsController = new BenefitsController(conn);
+            StandController standController = new StandController(conn);
+            RestaurateurController restaurateurController = new RestaurateurController(conn);
 
             // Users routes
             app.get("/api/users",usersController::getAll);
@@ -36,6 +40,8 @@ public class Main {
             app.get("/benefits/{id}", benefitsController::getOne);
             app.get("/benefits", benefitsController::getAll);
 
+            app.get("/stands/{id}", standController::getOne);
+            app.get("/restaurateurs/{id}", restaurateurController::getOne);
         } catch(SQLException e) {
             System.out.println("Error connecting to database " + Arrays.toString(e.getStackTrace()));
         }
