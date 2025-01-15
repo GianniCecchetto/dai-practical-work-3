@@ -34,6 +34,7 @@ public class Main {
             app.delete("/api/users/{id}", usersController::delete);
 
             app.get("/benefits/{id}", benefitsController::getOne);
+            app.get("/benefits", benefitsController::getAll);
 
         } catch(SQLException e) {
             System.out.println("Error connecting to database " + Arrays.toString(e.getStackTrace()));
