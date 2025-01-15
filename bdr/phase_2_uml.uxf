@@ -1,0 +1,709 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>11</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>308</x>
+      <y>319</y>
+      <w>231</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>scene
+--
+_U_ID_
+capacite_max
+plein_air (bool)
+cout
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>693</x>
+      <y>319</y>
+      <w>231</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>evenement
+--
+_U_ID_
+nom
+description</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1078</x>
+      <y>286</y>
+      <w>132</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lieu
+--
+_U_ID_
+nom
+addresse
+NPA</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>869</x>
+      <y>902</y>
+      <w>110</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>/personne/
+--
+_U_ID_
+nom
+prenom
+adresse
+num_tel
+email</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>693</x>
+      <y>748</y>
+      <w>132</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>artiste
+--
+score_popularite
+cout
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>847</x>
+      <y>748</y>
+      <w>99</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>spectateur
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>968</x>
+      <y>748</y>
+      <w>99</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>intervenant
+--
+role
+salaire
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>374</x>
+      <y>737</y>
+      <w>99</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>groupe
+--
+_U_ID_
+nom
+genre
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>550</y>
+      <w>132</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>materiel
+--
+_U_ID_
+nom
+cout
+description</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>759</x>
+      <y>814</y>
+      <w>176</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>140.0;80.0;140.0;40.0;10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>902</x>
+      <y>814</y>
+      <w>176</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+chevauchante, totale</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>902</x>
+      <y>825</y>
+      <w>132</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;30.0;100.0;30.0;100.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>462</x>
+      <y>748</y>
+      <w>253</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=1..n
+&lt; fait parti</panel_attributes>
+    <additional_attributes>10.0;20.0;210.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>352</y>
+      <w>187</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1..n
+m2=1
+&lt; possede</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>407</x>
+      <y>627</y>
+      <w>88</w>
+      <h>132</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+joue à ^</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>242</x>
+      <y>649</y>
+      <w>165</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>CI:
+bg=yellow
+un groupe ne peut 
+pas avoir deux concerts
+en même temps</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>913</x>
+      <y>341</y>
+      <w>187</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+prend place &gt;
+</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1067</x>
+      <y>407</y>
+      <w>198</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>CI:
+bg=yellow
+un lieu ne peut 
+pas accueillir deux 
+événement en même temps</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>957</x>
+      <y>429</y>
+      <w>99</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>horaire
+--
+date_debut
+date_fin
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>352</y>
+      <w>33</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>121</x>
+      <y>583</y>
+      <w>209</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..n
+&lt; necessite</panel_attributes>
+    <additional_attributes>10.0;20.0;170.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>792</x>
+      <y>143</y>
+      <w>55</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>stand
+--
+_U_ID_
+taille
+cout</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>990</x>
+      <y>143</y>
+      <w>132</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>restaurateur
+--
+_U_ID_
+nom
+description
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>814</x>
+      <y>220</y>
+      <w>110</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=1
+se trouve &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;90.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>308</x>
+      <y>539</y>
+      <w>231</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>_Concert_
+--
+_U_ID_
+heure_debut
+heure_fin
+necessite siege (bool)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>407</x>
+      <y>418</y>
+      <w>132</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..n
+est joué sur ^</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;110.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>242</x>
+      <y>440</y>
+      <w>165</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>CI:
+bg=yellow
+une scène ne peut 
+pas avoir deux concerts
+en même temps</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>803</x>
+      <y>396</y>
+      <w>154</w>
+      <h>374</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..n
+assiste ^</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;180.0;100.0;180.0;100.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>187</x>
+      <y>594</y>
+      <w>33</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=..</panel_attributes>
+    <additional_attributes>10.0;30.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>165</x>
+      <y>627</y>
+      <w>66</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>quantite
+--
+nombre</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1155</x>
+      <y>0</y>
+      <w>88</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>plat
+--
+_U_ID_
+nom
+description
+cout</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>836</x>
+      <y>165</y>
+      <w>176</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..1
+&lt; loue</panel_attributes>
+    <additional_attributes>10.0;20.0;140.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1111</x>
+      <y>88</y>
+      <w>121</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..n
+cuisine ^</panel_attributes>
+    <additional_attributes>10.0;70.0;70.0;70.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>693</x>
+      <y>627</y>
+      <w>77</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>siege
+--
+catégorie</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>704</x>
+      <y>506</y>
+      <w>66</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>billet
+--
+prix</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>462</x>
+      <y>638</y>
+      <w>77</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>place</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>528</x>
+      <y>627</y>
+      <w>187</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..n
+possede &gt;</panel_attributes>
+    <additional_attributes>10.0;20.0;150.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>759</x>
+      <y>627</y>
+      <w>165</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..1
+m2=0..n
+&lt; dispose</panel_attributes>
+    <additional_attributes>110.0;110.0;110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1287</x>
+      <y>132</y>
+      <w>88</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>menu
+--
+cout</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1287</x>
+      <y>264</y>
+      <w>88</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>boisson
+--
+_U_ID_
+nom
+contenance
+cout</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1111</x>
+      <y>198</y>
+      <w>198</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=0..n
+vend &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;70.0;160.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1111</x>
+      <y>143</y>
+      <w>198</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=
+vend &gt;</panel_attributes>
+    <additional_attributes>10.0;40.0;110.0;40.0;110.0;10.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>891</x>
+      <y>396</y>
+      <w>176</w>
+      <h>374</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=0..n
+m2=0..n
+travaille pour ^</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0;120.0;140.0;120.0;320.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1232</x>
+      <y>33</y>
+      <w>154</w>
+      <h>121</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=
+m2=1
+constitue v</panel_attributes>
+    <additional_attributes>90.0;90.0;90.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1320</x>
+      <y>176</y>
+      <w>110</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1
+m2=
+constitue ^</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1375</x>
+      <y>143</y>
+      <w>165</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>(Il s'agit d'un losange)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>484</x>
+      <y>671</y>
+      <w>165</w>
+      <h>77</h>
+    </coordinates>
+    <panel_attributes>CI:
+bg=yellow
+le nombre de siège ne doit
+pas dépasser
+capacite_max de scene</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>759</x>
+      <y>517</y>
+      <w>77</w>
+      <h>33</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>803</x>
+      <y>682</y>
+      <w>66</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>billet
+--
+prix</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>638</y>
+      <w>33</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
