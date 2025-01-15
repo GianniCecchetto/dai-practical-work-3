@@ -8,6 +8,7 @@
     <title>Recettes des Evenements</title>
 </head>
 <body>
+<button onclick="window.history.back()">Back</button>
 <h1>Liste des Recettes des Evenements</h1>
 <table>
     <thead>
@@ -21,7 +22,9 @@
     <tbody>
     @for(Benefits benefit : benefits)
     <tr>
-        <td>${benefit.id()}</td>
+        <td>
+            <a href="/benefits/${benefit.id()}">${benefit.id()}</a>
+        </td>
         <td>${benefit.name()}</td>
         <td>${benefit.benefitStand()}</td>
         <td>${benefit.benefitsTickets()}</td>

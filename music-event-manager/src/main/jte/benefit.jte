@@ -1,5 +1,5 @@
 @import ch.heigvd.dai.model.Benefits
-@param ch.heigvd.dai.model.Benefits benefit
+@param Benefits benefit
 
 
 <html>
@@ -7,6 +7,7 @@
     <title>Recettes des Evenements</title>
 </head>
 <body>
+    <button onclick="window.history.back()">Back</button>
     <h1>Liste des Recettes des Evenements</h1>
     <table>
         <thead>
