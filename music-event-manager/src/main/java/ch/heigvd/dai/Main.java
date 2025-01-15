@@ -42,8 +42,6 @@ public class Main {
             app.get("/benefits/{id}", benefitsController::getOne);
             app.get("/benefits", benefitsController::getAll);
 
-            app.get("/", ctx -> ctx.render("root.jte"));
-
             app.get("/group_event/{id}", groupEventController::getAll);
 
             app.get("/stands/{id}", standController::getOne);
