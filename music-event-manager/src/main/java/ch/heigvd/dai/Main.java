@@ -1,11 +1,8 @@
 package ch.heigvd.dai;
 
 import ch.heigvd.dai.controller.*;
-import ch.heigvd.dai.model.*;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinJte;
-
-import java.util.Collections;
 
 import java.sql.*;
 import java.util.Arrays;
@@ -25,7 +22,6 @@ public class Main {
         try (Connection conn = DriverManager.getConnection(url, props)) {
             // Controllers
             UsersController usersController = new UsersController(conn);
-            EventsController eventsController = new EventsController(conn, events);
             BenefitsController benefitsController = new BenefitsController(conn);
             GroupEventController groupEventController = new GroupEventController(conn);
             EventsController eventsController = new EventsController(conn);
@@ -42,7 +38,6 @@ public class Main {
             app.get("/api/events", eventsController::getAll);
 
             app.get("/", ctx -> ctx.render("root.jte"));
-            app.get("/moi", ctx -> ctx.render("moi.jte", Collections.singletonMap("events", events)));
 
             app.get("/benefits/{id}", benefitsController::getOne);
             app.get("/benefits", benefitsController::getAll);
