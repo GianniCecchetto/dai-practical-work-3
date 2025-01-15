@@ -24,7 +24,9 @@ SELECT
     sc.capacite_max,
     sc.plein_air,
     g.nom AS groupe_nom,
-    e.nom AS evenement_nom
+    e.nom AS evenement_nom,
+    e.id AS evenement_id,
+    g.genre AS groupe_genre
 FROM concert c
 JOIN scene sc ON c.scene_id = sc.id
 JOIN groupe g ON c.groupe_id = g.id
