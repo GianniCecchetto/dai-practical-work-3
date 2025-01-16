@@ -2,6 +2,7 @@ package ch.heigvd.dai.controller;
 
 import ch.heigvd.dai.model.Benefit;
 
+import ch.heigvd.dai.model.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,7 +25,12 @@ public class BenefitController {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        Benefit benefit = mapper.readValue(Benefit.getOne(connection, id), Benefit.class);
+        Benefit benefit = ctx.bodyValidator(Benefit.class)
+                .check(obj -> obj.id() != null, "Missing id")
+                .check(obj -> obj.name() != null, "Missing name")
+                .check(obj -> obj.benefitStand() != null, "Missing stand benefits")
+                .check(obj -> obj.benefitsTickets() != null, "Missing tickets benefits")
+                .get();
 
         ctx.render("benefit.jte", Map.of("benefit", benefit));
     }

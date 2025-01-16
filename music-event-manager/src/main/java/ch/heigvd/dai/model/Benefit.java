@@ -29,12 +29,14 @@ public record Benefit(Integer id, String name, Float benefitStand, Float benefit
 
             ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
+            String json = "";
             try {
-                String json = mapper.writeValueAsString(benefit);
-                return json;
+                json = mapper.writeValueAsString(benefit);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
+
+            return json;
         }
     }
 
@@ -60,12 +62,14 @@ public record Benefit(Integer id, String name, Float benefitStand, Float benefit
 
             ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
 
+            String json = "";
             try {
-                String json = mapper.writeValueAsString(benefits);
-                return json;
+                json = mapper.writeValueAsString(benefits);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();
             }
+
+            return json;
         }
     }
 
