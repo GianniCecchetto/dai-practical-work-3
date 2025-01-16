@@ -1,7 +1,6 @@
 package ch.heigvd.dai;
 
-import ch.heigvd.dai.controller.BenefitsController;
-import ch.heigvd.dai.controller.UsersController;
+import ch.heigvd.dai.controller.*;
 import io.javalin.Javalin;
 
 import java.sql.*;
@@ -24,7 +23,7 @@ public class Main {
             conn = DriverManager.getConnection(url, props);
             // Controllers
             UsersController usersController = new UsersController(conn);
-            BenefitsController benefitsController = new BenefitsController(conn);
+            BenefitController benefitController = new BenefitController(conn);
             
 
             // Users routes
@@ -34,8 +33,8 @@ public class Main {
             app.put("/api/users/{id}", usersController::update);
             app.delete("/api/users/{id}", usersController::delete);
 
-            app.get("/benefits/{id}", benefitsController::getOne);
-            app.get("/benefits", benefitsController::getAll);
+            app.get("/benefits/{id}", benefitController::getOne);
+            app.get("/benefits", benefitController::getAll);
 
         } catch(SQLException e) {
             System.out.println("Error connecting to database " + Arrays.toString(e.getStackTrace()));
