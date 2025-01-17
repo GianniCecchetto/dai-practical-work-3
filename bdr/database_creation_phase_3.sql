@@ -103,6 +103,7 @@ CREATE TABLE groupe
 CREATE TABLE concert
 (
     id              SERIAL PRIMARY KEY,
+    date            DATE    NOT NULL,
     heure_debut     TIME    NOT NULL,
     heure_fin       TIME    NOT NULL,
     necessite_siege BOOLEAN NOT NULL,

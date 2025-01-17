@@ -44,3 +44,52 @@ $$ LANGUAGE plpgsql;
 CREATE TRIGGER trigger_verif_capacite_siege
 BEFORE INSERT ON siege
 FOR EACH ROW EXECUTE FUNCTION verif_capacite_siege();
+
+-- Trigger pour vérifier les concerts sur un même lieu
+CREATE OR REPLACE FUNCTION check_event_overlap()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF EXISTS (
+        SELECT 1
+        FROM evenement
+        WHERE lieu_id = NEW.lieu_id
+        AND (                
+            NEW.date_debut <= date_fin
+            AND NEW.date_fin >= date_debut
+            OR NEW.date_debut < date_debut
+            AND NEW.date_fin > date_fin
+        )
+    ) THEN
+        RAISE EXCEPTION 'Conflit de dates pour le lieu %', NEW.lieu_id;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_event_overlap
+BEFORE INSERT OR UPDATE ON evenement
+FOR EACH ROW EXECUTE FUNCTION check_event_overlap();
+
+-- Trigger pour vérifier qu'il n'y a pas deux conccert en même temps sur une scène
+CREATE OR REPLACE FUNCTION check_concert_overlap()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF EXISTS (
+        SELECT 1
+        FROM concert
+        WHERE scene_id = NEW.scene_id
+        AND (
+            NEW.date = date -- Si c'est la même date, on vérifie les heures
+            AND NEW.heure_debut < heure_fin
+            AND NEW.heure_fin > heure_debut
+        )
+    ) THEN
+        RAISE EXCEPTION 'Conflit d''horaire pour la scène %', NEW.scene_id;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_concert_overlap
+BEFORE INSERT OR UPDATE ON concert
+FOR EACH ROW EXECUTE FUNCTION check_concert_overlap();
