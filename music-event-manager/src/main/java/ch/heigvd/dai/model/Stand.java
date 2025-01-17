@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public record Stand(Integer id, Float size, Float cout, Integer restaurateurId) {
+public record Stand(Integer id, Float size, Float cout, Integer restaurantId) {
     public static List<Stand> getStands(Connection connection, Integer evenementId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");

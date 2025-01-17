@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public record Restaurateur(Integer id, String name, String description) {
-    public static Restaurateur getRestaurateur(Connection connection, Integer restaurateurId) throws SQLException {
+public record Restaurant(Integer id, String name, String description) {
+    public static Restaurant getRestaurateur(Connection connection, Integer restaurateurId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
@@ -18,7 +18,7 @@ public record Restaurateur(Integer id, String name, String description) {
             ResultSet resultSet = stmt.executeQuery();
 
             resultSet.next();
-            return new Restaurateur(
+            return new Restaurant(
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getString("description")

@@ -38,9 +38,12 @@ public class Main {
             EventControllerApi eventControllerApi = new EventControllerApi(conn);
 
             StandController standController = new StandController(conn);
-            RestaurateurController restaurateurController = new RestaurateurController(conn);
+            RestaurantController restaurantController = new RestaurantController(conn);
 
             // Benefit routes
+            app.get("/events/{id}/benefits", benefitController::getOne);
+            app.get("/benefits", benefitController::getAll);
+            // API
             app.get("/api/benefits", benefitControllerApi::getAll);
             app.get("/api/benefits/{id}", benefitControllerApi::getOne);
 
@@ -51,23 +54,21 @@ public class Main {
             app.post("/api/events", eventControllerApi::create);
             app.put("/api/events/{id}", eventControllerApi::update);
             app.delete("/api/events/{id}", eventControllerApi::delete);
-
-            // Stands routes
-            app.get("/stands/{id}", standController::getOne);
-            app.get("/restaurateurs/{id}", restaurateurController::getOne);
-
-            // HTML routes
-            app.get("/", ctx -> ctx.render("root.jte"));
-
-            app.get("/benefits/{id}", benefitController::getOne);
-            app.get("/benefits", benefitController::getAll);
-
+            // API
             app.get("/group_event/{id}", groupEventController::getAll);
             app.get("/events", eventController::showAllEvents);
             app.get("/events/{id}", eventController::showDetails);
             app.get("/insertEvent", eventController::insertEvent);
             app.get("/modifyEvent/{id}", eventController::modifyEvent);
             app.get("/deleteEvent/{id}", eventController::deleteEvent);
+
+            // Stands routes
+            app.get("/stands/{id}", standController::getOne);
+            app.get("/restaurateurs/{id}", restaurantController::getOne);
+
+            // HTML routes
+            app.get("/", ctx -> ctx.render("root.jte"));
+
 
             app.start(7000);
         } catch(SQLException e) {

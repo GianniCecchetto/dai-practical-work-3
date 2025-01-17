@@ -68,6 +68,14 @@
             bottom: 0;
             width: 100%;
         }
+
+        a.button {
+            padding: 1px 6px;
+            border: 1px outset buttonborder;
+            color: buttontext;
+            background-color: #FF4400FF;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -100,6 +108,14 @@
         <tr>
             <th>NPA</th>
             <td>${location.npa()}</td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td><a href="/scenes" class="button">Scenes</a></td>
+            <td><a href="/events/${event.id()}/benefits" class="button">Benefits</a></td>
+            <td><a href="/spectators" class="button">Spectators</a></td>
+            <td><a href="/helpers" class="button">Helpers</a></td>
         </tr>
     </table>
 </main>

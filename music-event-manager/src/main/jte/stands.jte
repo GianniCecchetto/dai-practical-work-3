@@ -15,7 +15,7 @@
         <th>ID du stand</th>
         <th>Taille du stand</th>
         <th>Cout du stand</th>
-        <th>ID du restaurateur</th>
+        <th>ID du restaurant</th>
     </tr>
     </thead>
     <tbody>
@@ -25,7 +25,7 @@
             <td>${stand.size()}</td>
             <td>${stand.cout()}</td>
             <td>
-                <a href="/restaurateurs/${stand.restaurateurId()}">${stand.restaurateurId()}</a>
+                <a href="/restaurateurs/${stand.restaurantId()}">${stand.restaurantId()}</a>
             </td>
         </tr>
     @endfor

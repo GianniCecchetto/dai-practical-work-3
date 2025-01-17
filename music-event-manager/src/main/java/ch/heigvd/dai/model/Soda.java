@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public record Boisson(Integer id, String name, Float cout, Float content) {
-    public static List<Boisson> getBoissons(Connection connection, Integer restaurateurId) throws SQLException {
+public record Soda(Integer id, String name, Float cout, Float content) {
+    public static List<Soda> getBoissons(Connection connection, Integer restaurateurId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
@@ -18,9 +18,9 @@ public record Boisson(Integer id, String name, Float cout, Float content) {
             stmt.setInt(1, restaurateurId);
             ResultSet resultSet = stmt.executeQuery();
 
-            List<Boisson> boissons = new ArrayList<>();
+            List<Soda> sodas = new ArrayList<>();
             while (resultSet.next()) {
-                boissons.add(new Boisson(
+                sodas.add(new Soda(
                         resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getFloat("cout"),
@@ -28,11 +28,11 @@ public record Boisson(Integer id, String name, Float cout, Float content) {
                 ));
             }
 
-            return boissons;
+            return sodas;
         }
     }
 
-    public static Boisson getBoisson(Connection connection, Integer boissonId) throws SQLException {
+    public static Soda getBoisson(Connection connection, Integer boissonId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
@@ -43,7 +43,7 @@ public record Boisson(Integer id, String name, Float cout, Float content) {
             ResultSet resultSet = stmt.executeQuery();
 
             resultSet.next();
-            return new Boisson(
+            return new Soda(
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getFloat("cout"),
