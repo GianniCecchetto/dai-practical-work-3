@@ -22,9 +22,9 @@ public record User(Integer id, String name, String firstName, String address, St
             while(resultSet.next()){
                 users.add(new User(
                         resultSet.getInt("id"),
-                        resultSet.getString("nom"),
+                        resultSet.getString("name"),
                         resultSet.getString("prenom"),
-                        resultSet.getString("adresse"),
+                        resultSet.getString("address"),
                         resultSet.getString("num_tel"),
                         resultSet.getString("email")
                 ));

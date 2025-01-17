@@ -1,6 +1,7 @@
 @import ch.heigvd.dai.model.Event
+@import ch.heigvd.dai.model.Location
 @param Event event
-
+@param Location location
 
 <html lang="fr">
 <head>
@@ -74,31 +75,31 @@
     <h1>Détails de l'Événement</h1>
 </header>
 <main>
-    <h2>${eventDetail.name()}</h2>
+    <h2>${event.name()}</h2>
     <table>
         <tr>
             <th>Date de Début</th>
-            <td>${eventDetail.beginning().toString()}</td>
+            <td>${event.beginning().toString()}</td>
         </tr>
         <tr>
             <th>Date de Fin</th>
-            <td>${eventDetail.end().toString()}</td>
+            <td>${event.end().toString()}</td>
         </tr>
         <tr>
             <th>Prix d'Entrée</th>
-            <td>${eventDetail.entryPrice()} CHF</td>
+            <td>${event.entryPrice()} CHF</td>
         </tr>
         <tr>
             <th>Lieu</th>
-            <td>${eventDetail.placeName()}</td>
+            <td>${location.name()}</td>
         </tr>
         <tr>
             <th>Adresse</th>
-            <td>${eventDetail.adresse()}</td>
+            <td>${location.address()}</td>
         </tr>
         <tr>
             <th>NPA</th>
-            <td>${eventDetail.NPA()}</td>
+            <td>${location.npa()}</td>
         </tr>
     </table>
 </main>

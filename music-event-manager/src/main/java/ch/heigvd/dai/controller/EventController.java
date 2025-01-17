@@ -1,6 +1,7 @@
 package ch.heigvd.dai.controller;
 
 import ch.heigvd.dai.model.Event;
+import ch.heigvd.dai.model.Location;
 import io.javalin.http.Context;
 
 import java.sql.Connection;
@@ -21,6 +22,21 @@ public class EventController {
     public void showDetails(Context ctx) throws SQLException {
         Integer id = ctx.pathParamAsClass("id", Integer.class).get();
 
-        ctx.render("event.jte", Map.of("event", Event.getOne(connection, id)));
+        Event event = Event.getOne(connection, id);
+        Location location = Location.getOne(connection, event.locationId());
+
+        ctx.render("eventDetail.jte", Map.of("event", event, "location", location));
+    }
+
+    public void insertEvent(Context ctx) throws SQLException {
+        ctx.render("insertEvent.jte", Map.of("locations", Location.getAll(connection)));
+    }
+
+    public void modifyEvent(Context ctx) throws SQLException {
+        ctx.render("modifyEvent.jte");
+    }
+
+    public void deleteEvent(Context ctx) throws SQLException {
+        ctx.render("deleteEvent.jte");
     }
 }

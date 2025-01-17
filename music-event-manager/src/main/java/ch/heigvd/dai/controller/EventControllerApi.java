@@ -33,13 +33,12 @@ public class EventControllerApi {
 
     public void create(Context ctx) throws SQLException {
         Event event = ctx.bodyValidator(Event.class)
-                .check(obj -> obj.id() != null, "Missing id")
                 .check(obj -> obj.description() != null, "Missing name")
                 .check(obj -> obj.name() != null, "Missing stand benefits")
                 .check(obj -> obj.entryPrice() != null, "Missing tickets benefits")
                 .check(obj -> obj.beginning() != null, "Missing tickets benefits")
                 .check(obj -> obj.end() != null, "Missing tickets benefits")
-                .check(obj -> obj.location() != null, "Missing tickets benefits")
+                .check(obj -> obj.locationId() != null, "Missing tickets benefits")
                 .get();
 
         Event.create(connection, event);

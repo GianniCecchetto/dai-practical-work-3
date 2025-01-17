@@ -22,7 +22,7 @@ public record Boisson(Integer id, String name, Float cout, Float content) {
             while (resultSet.next()) {
                 boissons.add(new Boisson(
                         resultSet.getInt("id"),
-                        resultSet.getString("nom"),
+                        resultSet.getString("name"),
                         resultSet.getFloat("cout"),
                         resultSet.getFloat("contenance")
                 ));
@@ -45,7 +45,7 @@ public record Boisson(Integer id, String name, Float cout, Float content) {
             resultSet.next();
             return new Boisson(
                     resultSet.getInt("id"),
-                    resultSet.getString("nom"),
+                    resultSet.getString("name"),
                     resultSet.getFloat("cout"),
                     resultSet.getFloat("contenance")
             );

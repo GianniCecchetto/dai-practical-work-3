@@ -23,7 +23,7 @@ public record Plat(Integer id, String name, String description, Float cout) {
             while (resultSet.next()) {
                 plats.add(new Plat(
                         resultSet.getInt("id"),
-                        resultSet.getString("nom"),
+                        resultSet.getString("name"),
                         resultSet.getString("description"),
                         resultSet.getFloat("cout")
                 ));
@@ -47,7 +47,7 @@ public record Plat(Integer id, String name, String description, Float cout) {
             resultSet.next();
             return new Plat(
                     resultSet.getInt("id"),
-                    resultSet.getString("nom"),
+                    resultSet.getString("name"),
                     resultSet.getString("text"),
                     resultSet.getFloat("cout")
             );

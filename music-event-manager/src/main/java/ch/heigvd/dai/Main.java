@@ -11,7 +11,13 @@ import java.util.Properties;
 public class Main {
     public static void main(String[] args) {
         Javalin app = Javalin.create(
-                config -> { config.fileRenderer(new JavalinJte()); }
+                config -> { config.fileRenderer(new JavalinJte());
+                            config.bundledPlugins.enableCors(cors -> {
+                                cors.addRule(it -> {
+                                    it.anyHost();
+                                });
+                            })
+                ;}
         );
 
 
@@ -59,9 +65,9 @@ public class Main {
             app.get("/group_event/{id}", groupEventController::getAll);
             app.get("/events", eventController::showAllEvents);
             app.get("/events/{id}", eventController::showDetails);
-
-            app.get("/stands/{id}", standController::getOne);
-            app.get("/restaurateurs/{id}", restaurateurController::getOne);
+            app.get("/insertEvent", eventController::insertEvent);
+            app.get("/modifyEvent/{id}", eventController::modifyEvent);
+            app.get("/deleteEvent/{id}", eventController::deleteEvent);
 
             app.start(7000);
         } catch(SQLException e) {
