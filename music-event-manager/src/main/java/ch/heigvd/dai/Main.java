@@ -38,12 +38,13 @@ public class Main {
             app.get("/api/benefits", benefitControllerApi::getAll);
             app.get("/api/benefits/{id}", benefitControllerApi::getOne);
 
-
             // Events routes
             app.get("/api/group_event/{id}", groupEventController::getAll);
             app.get("/api/events", eventControllerApi::getAll);
             app.get("/api/events/{id}", eventControllerApi::getOne);
             app.post("/api/events", eventControllerApi::create);
+            app.put("/api/events/{id}", eventControllerApi::update);
+            app.delete("/api/events/{id}", eventControllerApi::delete);
 
             // Stands routes
             app.get("/stands/{id}", standController::getOne);
@@ -56,8 +57,8 @@ public class Main {
             app.get("/benefits", benefitController::getAll);
 
             app.get("/group_event/{id}", groupEventController::getAll);
-            app.get("/events", eventController::getAll);
-            app.get("/events/{id}", eventController::getOne);
+            app.get("/events", eventController::showAllEvents);
+            app.get("/events/{id}", eventController::showDetails);
 
             app.get("/stands/{id}", standController::getOne);
             app.get("/restaurateurs/{id}", restaurateurController::getOne);

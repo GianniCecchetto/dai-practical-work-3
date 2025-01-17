@@ -2,6 +2,8 @@ package ch.heigvd.dai.controller;
 
 import ch.heigvd.dai.model.Event;
 import io.javalin.http.Context;
+import io.javalin.http.HttpStatus;
+import io.javalin.http.NotFoundResponse;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -20,17 +22,37 @@ public class EventControllerApi {
     public void getOne(Context ctx) throws SQLException {
         Integer id = ctx.pathParamAsClass("id", Integer.class).get();
 
+        Event event = Event.getOne(connection, id);
+
+        if (event == null) {
+            throw new NotFoundResponse();
+        }
+
         ctx.json(Event.getOne(connection, id));
     }
 
     public void create(Context ctx) throws SQLException {
         Event event = ctx.bodyValidator(Event.class)
                 .check(obj -> obj.id() != null, "Missing id")
-                .check(obj -> obj.name() != null, "Missing name")
-                .check(obj -> obj.benefitStand() != null, "Missing stand benefits")
-                .check(obj -> obj.benefitsTickets() != null, "Missing tickets benefits")
+                .check(obj -> obj.description() != null, "Missing name")
+                .check(obj -> obj.name() != null, "Missing stand benefits")
+                .check(obj -> obj.entryPrice() != null, "Missing tickets benefits")
+                .check(obj -> obj.beginning() != null, "Missing tickets benefits")
+                .check(obj -> obj.end() != null, "Missing tickets benefits")
+                .check(obj -> obj.location() != null, "Missing tickets benefits")
                 .get();
 
-        ctx.json(Event.create(connection, event));
+        Event.create(connection, event);
+
+        ctx.status(HttpStatus.CREATED);
+        ctx.json(event);
+    }
+
+    public void update(Context ctx) throws SQLException {
+
+    }
+
+    public void delete(Context ctx) throws SQLException {
+
     }
 }

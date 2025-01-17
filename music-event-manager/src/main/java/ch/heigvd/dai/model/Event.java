@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
 
-public record Event(Integer id, String name, String description, double entryPrice, Date beginning, Date end, Lieu lieu) {
+public record Event(Integer id, String name, String description, Double entryPrice, Date beginning, Date end, Location location) {
     public static Event getOne(Connection connection, Integer evenementId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
@@ -32,10 +32,10 @@ public record Event(Integer id, String name, String description, double entryPri
                     resultSet.getInt("evenement_id"),
                     resultSet.getString("description"),
                     resultSet.getString("evenement_nom"),
-                    resultSet.getInt("prix_entree"),
+                    resultSet.getDouble("prix_entree"),
                     resultSet.getDate("date_debut"),
                     resultSet.getDate("date_fin"),
-                    new Lieu(
+                    new Location(
                             resultSet.getInt("lieu_id"),
                             resultSet.getString("lieu_nom"),
                             resultSet.getString("adresse"),
@@ -70,10 +70,10 @@ public record Event(Integer id, String name, String description, double entryPri
                         resultSet.getInt("evenement_id"),
                         resultSet.getString("description"),
                         resultSet.getString("evenement_nom"),
-                        resultSet.getInt("prix_entree"),
+                        resultSet.getDouble("prix_entree"),
                         resultSet.getDate("date_debut"),
                         resultSet.getDate("date_fin"),
-                        new Lieu(
+                        new Location(
                                 resultSet.getInt("lieu_id"),
                                 resultSet.getString("lieu_nom"),
                                 resultSet.getString("adresse"),
@@ -99,7 +99,7 @@ public record Event(Integer id, String name, String description, double entryPri
             stmt.setDouble(3, event.entryPrice());
             stmt.setDate(4, event.beginning());
             stmt.setDate(5, event.end());
-            stmt.setInt(6, event.lieu().id());
+            stmt.setInt(6, event.location().id());
             stmt.executeQuery();
         }
     }

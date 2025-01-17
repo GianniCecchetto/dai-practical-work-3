@@ -14,11 +14,11 @@ public class EventController {
         this.connection = connection;
     }
 
-    public void getAll(Context ctx) throws SQLException {
+    public void showAllEvents(Context ctx) throws SQLException {
         ctx.render("events.jte", Map.of("events", Event.getAll(connection)));
     }
 
-    public void getOne(Context ctx) throws SQLException {
+    public void showDetails(Context ctx) throws SQLException {
         Integer id = ctx.pathParamAsClass("id", Integer.class).get();
 
         ctx.render("event.jte", Map.of("event", Event.getOne(connection, id)));
