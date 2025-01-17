@@ -4,10 +4,12 @@ SET search_path = embedded;
 CREATE OR REPLACE VIEW vue_evenement_lieu AS
 SELECT
     e.id AS evenement_id,
+    e.description,
     e.nom AS evenement_nom,
     e.date_debut,
     e.date_fin,
     e.prix_entree,
+    l.id AS lieu_id,
     l.nom AS lieu_nom,
     l.adresse,
     l.NPA
