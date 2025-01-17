@@ -4,74 +4,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <style>
+        /* Styles généraux */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f9;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
             background-color: #ff5900;
             color: white;
-            padding: 20px;
-            text-align: center;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* Menu déroulant */
+        .menu-container {
             position: relative;
         }
 
-        main {
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        p {
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        /* Menu Styling */
-        .menu-container {
-            position: absolute;
-            top: 20px; /* Positionnement plus haut */
-            left: 20px;
-            z-index: 10;
-        }
-
         .menu-button {
-            background-color: white; /* Fond blanc pour ressortir */
-            color: #ff5900; /* Texte orange pour correspondre au thème */
-            padding: 10px 20px;
-            border: 2px solid #ff5900; /* Bordure orange */
+            background-color: white;
+            color: #ff5900;
+            padding: 10px 40px;
+            border: 2px solid #ff5900;
             border-radius: 4px;
+            font-size: 16px;
             cursor: pointer;
-            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 200px; /* Largeur ajustée pour l'icône */
+            height: 40px; /* Hauteur ajustée */
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
         .menu-button:hover {
-            background-color: #ff5900; /* Fond orange au survol */
-            color: white; /* Texte blanc */
-            transform: translateY(-2px);
+            background-color: #ff5900;
+            color: white;
+        }
+
+        .menu-button::before {
+            content: "☰"; /* Icône menu (trois barres) */
+            font-size: 24px;
         }
 
         .dropdown-menu {
             display: none;
             position: absolute;
-            background-color: #ff5900;
-            min-width: 200px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-            animation: slideDown 0.6s ease; /* Animation plus lente */
+            left: 0;
+            top: 100%;
+            background-color: #cc4800; /* Fond plus foncé */
+            width: 100%; /* Même largeur que le bouton */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombre renforcée */
+            z-index: 100;
+        }
+
+        .menu-container:hover .dropdown-menu {
+            display: block;
         }
 
         .dropdown-menu a {
             color: white;
-            padding: 12px 16px;
             text-decoration: none;
+            padding: 8px 10px;
             display: block;
             font-size: 16px;
             transition: background-color 0.3s ease;
@@ -81,41 +89,42 @@
             background-color: #ff4400;
         }
 
-        /* Show menu on hover */
-        .menu-container:hover .dropdown-menu {
-            display: block;
+        /* Contenu principal */
+        main {
+            flex: 1;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
 
-        /* Animation for dropdown */
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        main h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #ff5900;
         }
 
+        main p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            margin-top: 20px;
             padding: 10px 0;
             background-color: #FF4400FF;
             color: white;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
         }
     </style>
 </head>
 <body>
 <header>
-    <h1>Bienvenue sur l'Organisation des Événements</h1>
+    <h1>Organisation des Événements</h1>
     <div class="menu-container">
-        <button class="menu-button">Menu</button>
+        <button class="menu-button"></button>
         <div class="dropdown-menu">
             <a href="/api/events">🎉 Voir les Événements</a>
             <a href="/api/users">👥 Gestion des Utilisateurs</a>
@@ -126,8 +135,14 @@
 
 <main>
     <h1>Explorez nos fonctionnalités</h1>
-    <p>Accédez aux différents modules et explorez les événements, les groupes et bien plus encore.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet justo eu ligula vulputate auctor non vel erat. Ut scelerisque libero nec justo volutpat, nec bibendum orci congue.</p>
+    <p>
+        Bienvenue sur notre plateforme ! Découvrez des événements passionnants, gérez vos utilisateurs, et accédez à
+        des avantages exclusifs. Naviguez à travers nos différentes sections pour en savoir plus.
+    </p>
+    <p>
+        Nous proposons une interface intuitive et des fonctionnalités enrichies pour faciliter votre gestion des
+        événements. Profitez dès maintenant de notre expérience unique !
+    </p>
 </main>
 
 <footer>

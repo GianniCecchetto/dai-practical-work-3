@@ -2,7 +2,6 @@
 @import java.util.List
 @param List<Event> events
 
-
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -32,6 +31,12 @@
 
         h1 {
             font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: flex-end;
             margin-bottom: 20px;
         }
 
@@ -96,12 +101,15 @@
     <h1>Liste des Événements</h1>
 </header>
 <main>
+    <div class="actions">
+        <button onclick="redirectToAddEvent()">➕ Ajouter un événement</button>
+    </div>
     <table>
         <thead>
         <tr>
             <th>Nom de l'Événement</th>
             <th>Dates</th>
-            <th>Details</th>
+            <th>Détails</th>
         </tr>
         </thead>
         <tbody>
@@ -109,21 +117,26 @@
             <tr>
                 <td>${event.name()}</td>
                 <td>${event.beginning().toString()} - ${event.end().toString()}</td>
-                <td> <button onclick="redirectToDetails(${event.id()})">Details</button></td>
+                <td> <button onclick="redirectToDetails(${event.id()})">Détails</button></td>
             </tr>
         @endfor
-        <script>
-            function redirectToDetails(eventId) {
-                const baseUrl = '/event_detail/';
-                window.location.href = baseUrl + eventId;
-            }
-        </script>
         </tbody>
     </table>
 </main>
 <footer>
     &copy; 2025 - Organisation des Événements by HEIG-VD
 </footer>
+
+<script>
+    function redirectToDetails(eventId) {
+        const baseUrl = '/event_detail/';
+        window.location.href = baseUrl + eventId;
+    }
+
+    function redirectToAddEvent() {
+        const addEventUrl = '/addEvent';
+        window.location.href = addEventUrl;
+    }
+</script>
 </body>
 </html>
-
