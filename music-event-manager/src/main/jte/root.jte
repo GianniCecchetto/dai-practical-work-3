@@ -127,8 +127,7 @@
         <button class="menu-button"></button>
         <div class="dropdown-menu">
             <a href="/events">🎉 Voir les Événements</a>
-            <a href="/users">👥 Gestion des Utilisateurs</a>
-            <a href="/benefits">🎁 Voir les Avantages</a>
+            <a href="/benefits">🎁 Voir les Bénéfices</a>
         </div>
     </div>
 </header>

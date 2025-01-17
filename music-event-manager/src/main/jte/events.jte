@@ -134,7 +134,7 @@
     }
 
     function redirectToAddEvent() {
-        const addEventUrl = '/insertEvent';
+        const addEventUrl = '/events/insert';
         window.location.href = addEventUrl;
     }
 </script>

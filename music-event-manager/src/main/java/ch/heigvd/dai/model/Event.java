@@ -11,17 +11,7 @@ public record Event(Integer id, String name, String description, Double entryPri
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
 
-        String sql = "SELECT DISTINCT evenement_id," +
-                "    description," +
-                "    evenement_nom," +
-                "    date_debut," +
-                "    date_fin," +
-                "    prix_entree," +
-                "    lieu_id," +
-                "    lieu_nom," +
-                "    adresse," +
-                "    NPA " +
-                "FROM vue_evenement_lieu WHERE evenement_id = ?;";
+        String sql = "SELECT DISTINCT evenement_id, description, evenement_nom, date_debut, date_fin, prix_entree, lieu_id FROM vue_evenement_lieu WHERE evenement_id = ?;";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, evenementId);
@@ -45,17 +35,7 @@ public record Event(Integer id, String name, String description, Double entryPri
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
 
-        String sql = "SELECT DISTINCT evenement_id," +
-                "    description," +
-                "    evenement_nom," +
-                "    date_debut," +
-                "    date_fin," +
-                "    prix_entree," +
-                "    lieu_id," +
-                "    lieu_nom," +
-                "    adresse," +
-                "    NPA " +
-                "FROM vue_evenement_lieu;";
+        String sql = "SELECT evenement_id, description, evenement_nom, date_debut, date_fin, prix_entree, lieu_id FROM vue_evenement_lieu;";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             ResultSet resultSet = stmt.executeQuery();

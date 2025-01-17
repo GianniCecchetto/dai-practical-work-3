@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public record Plat(Integer id, String name, String description, Float cout) {
-    public static List<Plat> getPlats(Connection connection, Integer restaurateurId) throws SQLException {
+public record Plate(Integer id, String name, String description, Float cout) {
+    public static List<Plate> getPlats(Connection connection, Integer restaurateurId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
@@ -19,9 +19,9 @@ public record Plat(Integer id, String name, String description, Float cout) {
             stmt.setInt(1, restaurateurId);
             ResultSet resultSet = stmt.executeQuery();
 
-            List<Plat> plats = new ArrayList<>();
+            List<Plate> plates = new ArrayList<>();
             while (resultSet.next()) {
-                plats.add(new Plat(
+                plates.add(new Plate(
                         resultSet.getInt("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"),
@@ -29,11 +29,11 @@ public record Plat(Integer id, String name, String description, Float cout) {
                 ));
             }
 
-            return plats;
+            return plates;
         }
     }
 
-    public static Plat getPlat(Connection connection, Integer platId) throws SQLException {
+    public static Plate getPlat(Connection connection, Integer platId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
@@ -45,7 +45,7 @@ public record Plat(Integer id, String name, String description, Float cout) {
             ResultSet resultSet = stmt.executeQuery();
 
             resultSet.next();
-            return new Plat(
+            return new Plate(
                     resultSet.getInt("id"),
                     resultSet.getString("name"),
                     resultSet.getString("text"),

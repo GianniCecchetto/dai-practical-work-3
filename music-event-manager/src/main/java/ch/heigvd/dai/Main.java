@@ -40,27 +40,27 @@ public class Main {
             StandController standController = new StandController(conn);
             RestaurantController restaurantController = new RestaurantController(conn);
 
-            // Benefit routes
+            // Benefits routes
             app.get("/events/{id}/benefits", benefitController::getOne);
             app.get("/benefits", benefitController::getAll);
             // API
             app.get("/api/benefits", benefitControllerApi::getAll);
-            app.get("/api/benefits/{id}", benefitControllerApi::getOne);
+            app.get("/api/events/{id}/benefits", benefitControllerApi::getOne);
 
             // Events routes
+            app.get("/group_event/{id}", groupEventController::getAll);
+            app.get("/events", eventController::showAllEvents);
+            app.get("/events/{id}", eventController::showDetails);
+            app.get("/events/insert", eventController::insertEvent);
+            app.get("/events/{id}/modify", eventController::modifyEvent);
+            app.get("/events/{id}/delete", eventController::deleteEvent);
+            // API
             app.get("/api/group_event/{id}", groupEventController::getAll);
             app.get("/api/events", eventControllerApi::getAll);
             app.get("/api/events/{id}", eventControllerApi::getOne);
             app.post("/api/events", eventControllerApi::create);
             app.put("/api/events/{id}", eventControllerApi::update);
             app.delete("/api/events/{id}", eventControllerApi::delete);
-            // API
-            app.get("/group_event/{id}", groupEventController::getAll);
-            app.get("/events", eventController::showAllEvents);
-            app.get("/events/{id}", eventController::showDetails);
-            app.get("/insertEvent", eventController::insertEvent);
-            app.get("/modifyEvent/{id}", eventController::modifyEvent);
-            app.get("/deleteEvent/{id}", eventController::deleteEvent);
 
             // Stands routes
             app.get("/stands/{id}", standController::getOne);
@@ -68,7 +68,6 @@ public class Main {
 
             // HTML routes
             app.get("/", ctx -> ctx.render("root.jte"));
-
 
             app.start(7000);
         } catch(SQLException e) {
