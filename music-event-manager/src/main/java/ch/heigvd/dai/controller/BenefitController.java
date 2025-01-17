@@ -20,26 +20,17 @@ public class BenefitController {
         this.connection = connection;
     }
 
-    public void getOne(Context ctx) throws SQLException, JsonProcessingException {
+    public void getOne(Context ctx) throws SQLException {
         Integer id = ctx.pathParamAsClass("id", Integer.class).get();
 
-        ObjectMapper mapper = new ObjectMapper();
-
-        Benefit benefit = ctx.bodyValidator(Benefit.class)
-                .check(obj -> obj.id() != null, "Missing id")
-                .check(obj -> obj.name() != null, "Missing name")
-                .check(obj -> obj.benefitStand() != null, "Missing stand benefits")
-                .check(obj -> obj.benefitsTickets() != null, "Missing tickets benefits")
-                .get();
+        Benefit benefit = Benefit.getOne(connection, id);
 
         ctx.render("benefit.jte", Map.of("benefit", benefit));
     }
 
-    public void getAll(Context ctx) throws SQLException, JsonProcessingException {
+    public void getAll(Context ctx) throws SQLException {
 
-        ObjectMapper mapper = new ObjectMapper();
-
-        List<Benefit> benefits = mapper.readValue(Benefit.getAll(connection), new TypeReference<List<Benefit>>(){});
+        List<Benefit> benefits = Benefit.getAll(connection);
 
         ctx.render("benefits.jte", Map.of("benefits", benefits));
     }

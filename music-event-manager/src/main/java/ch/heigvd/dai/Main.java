@@ -22,16 +22,20 @@ public class Main {
         try  {
             conn = DriverManager.getConnection(url, props);
             // Controllers
-            UsersController usersController = new UsersController(conn);
             BenefitController benefitController = new BenefitController(conn);
-            
+            BenefitControllerApi benefitControllerApi = new BenefitControllerApi(conn);
 
-            // Users routes
-            app.get("/api/users",usersController::getAll);
-            app.post("/api/users", usersController::create);
-            app.get("/api/users/{id}", usersController::getOne);
-            app.put("/api/users/{id}", usersController::update);
-            app.delete("/api/users/{id}", usersController::delete);
+            // Benefit routes
+            app.get("/api/benefits", benefitControllerApi::getAll);
+            app.get("/api/benefits/{id}", benefitControllerApi::getOne);
+
+            // Event routes
+            app.get("/api/events");
+            app.get("/api/events/{id}");
+            app.get("/api/events");
+            app.get("/api/events");
+            app.get("/api/events");
+            app.get("/api/events");
 
             app.get("/benefits/{id}", benefitController::getOne);
             app.get("/benefits", benefitController::getAll);

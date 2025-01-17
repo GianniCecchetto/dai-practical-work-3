@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public record Benefit(Integer id, String name, Float benefitStand, Float benefitsTickets) {
-    public static String getOne(Connection connection, Integer eventId) throws SQLException {
+    public static Benefit getOne(Connection connection, Integer eventId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
@@ -27,20 +27,11 @@ public record Benefit(Integer id, String name, Float benefitStand, Float benefit
                 resultSet.getFloat("recettes_billets")
             );
 
-            ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-
-            String json = "";
-            try {
-                json = mapper.writeValueAsString(benefit);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-
-            return json;
+            return benefit;
         }
     }
 
-    public static String getAll(Connection connection) throws SQLException {
+    public static List<Benefit> getAll(Connection connection) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
@@ -60,16 +51,7 @@ public record Benefit(Integer id, String name, Float benefitStand, Float benefit
                 ));
             }
 
-            ObjectMapper mapper = new ObjectMapper().enable(SerializationFeature.INDENT_OUTPUT);
-
-            String json = "";
-            try {
-                json = mapper.writeValueAsString(benefits);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-
-            return json;
+            return benefits;
         }
     }
 
