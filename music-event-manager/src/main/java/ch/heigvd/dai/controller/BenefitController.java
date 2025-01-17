@@ -23,15 +23,10 @@ public class BenefitController {
     public void getOne(Context ctx) throws SQLException {
         Integer id = ctx.pathParamAsClass("id", Integer.class).get();
 
-        Benefit benefit = Benefit.getOne(connection, id);
-
-        ctx.render("benefit.jte", Map.of("benefit", benefit));
+        ctx.render("benefit.jte", Map.of("benefit", Benefit.getOne(connection, id)));
     }
 
     public void getAll(Context ctx) throws SQLException {
-
-        List<Benefit> benefits = Benefit.getAll(connection);
-
-        ctx.render("benefits.jte", Map.of("benefits", benefits));
+        ctx.render("benefits.jte", Map.of("benefits", Benefit.getAll(connection)));
     }
 }

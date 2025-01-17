@@ -1,5 +1,7 @@
-@import ch.heigvd.dai.model.Benefit
-@param Benefit benefit
+@import ch.heigvd.dai.model.Event
+@import java.util.List
+@param List<Event> events
+
 
 <html lang="fr">
 <head>
@@ -16,7 +18,7 @@
         }
 
         header {
-            background-color: #ea710c;
+            background-color: #ff5900;
             color: white;
             padding: 20px;
             text-align: center;
@@ -48,7 +50,7 @@
         }
 
         th {
-            background-color: #ea710c;
+            background-color: #FF4400FF;
             color: white;
         }
 
@@ -56,11 +58,32 @@
             background-color: #f1f1f1;
         }
 
+        button {
+            padding: 10px 15px;
+            background-color: #ff5900;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #ff4400;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            background-color: #e63900;
+            transform: translateY(0);
+        }
+
         footer {
             text-align: center;
             margin-top: 20px;
             padding: 10px 0;
-            background-color: #ea710c;
+            background-color: #FF4400FF;
             color: white;
             position: fixed;
             bottom: 0;
@@ -68,29 +91,39 @@
         }
     </style>
 </head>
-<head>
-    <title>Recettes des Evenements</title>
-</head>
 <body>
-    <button onclick="window.history.back()">Back</button>
-    <h1>Liste des Recettes des Evenements</h1>
+<header>
+    <h1>Liste des Événements</h1>
+</header>
+<main>
     <table>
         <thead>
-            <tr>
-                <th>ID de l'evenement</th>
-                <th>Nom de l'evenement</th>
-                <th>Recettes des stands</th>
-                <th>Recettes des billets</th>
-            </tr>
+        <tr>
+            <th>Nom de l'Événement</th>
+            <th>Dates</th>
+            <th>Details</th>
+        </tr>
         </thead>
         <tbody>
+        @for(Event event : events)
             <tr>
-                <td>${benefit.id()}</td>
-                <td>${benefit.name()}</td>
-                <td>${benefit.benefitStand()}</td>
-                <td>${benefit.benefitsTickets()}</td>
+                <td>${event.name()}</td>
+                <td>${event.beginning().toString()} - ${event.end().toString()}</td>
+                <td> <button onclick="redirectToDetails(${event.id()})">Details</button></td>
             </tr>
+        @endfor
+        <script>
+            function redirectToDetails(eventId) {
+                const baseUrl = '/event_detail/';
+                window.location.href = baseUrl + eventId;
+            }
+        </script>
         </tbody>
     </table>
+</main>
+<footer>
+    &copy; 2025 - Organisation des Événements by HEIG-VD
+</footer>
 </body>
 </html>
+

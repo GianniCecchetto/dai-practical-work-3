@@ -1,6 +1,5 @@
 package ch.heigvd.dai.controller;
 
-import ch.heigvd.dai.model.Benefit;
 import ch.heigvd.dai.model.Group;
 import io.javalin.http.Context;
 

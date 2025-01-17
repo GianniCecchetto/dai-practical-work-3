@@ -1,5 +1,5 @@
-jte-classes
-target/
+jte-classes/*
+target/*
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
