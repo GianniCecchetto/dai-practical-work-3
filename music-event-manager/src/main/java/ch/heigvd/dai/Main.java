@@ -40,6 +40,8 @@ public class Main {
             StandController standController = new StandController(conn);
             RestaurantController restaurantController = new RestaurantController(conn);
 
+            SceneController sceneController = new SceneController(conn);
+
             // Benefits routes
             app.get("/events/{id}/benefits", benefitController::getOne);
             app.get("/benefits", benefitController::getAll);
@@ -50,8 +52,8 @@ public class Main {
             // Events routes
             app.get("/group_event/{id}", groupEventController::getAll);
             app.get("/events", eventController::showAllEvents);
-            app.get("/events/{id}", eventController::showDetails);
             app.get("/events/insert", eventController::insertEvent);
+            app.get("/events/{id}", eventController::showDetails);
             app.get("/events/{id}/modify", eventController::modifyEvent);
             app.get("/events/{id}/delete", eventController::deleteEvent);
             // API
@@ -65,6 +67,15 @@ public class Main {
             // Stands routes
             app.get("/stands/{id}", standController::getOne);
             app.get("/restaurants/{id}", restaurantController::getOne);
+
+            //Scenes routes
+            app.get("/scenes", sceneController::showAllScenes);
+            app.get("/scenes/insert", sceneController::insertScene);
+            app.post("/scenes/insert", sceneController::handleInsertScene);
+            app.get("/scenes/{id}", sceneController::showDetails);
+            app.get("/scenes/{id}/modify", sceneController::modifyScene);
+            app.get("/scenes/{id}/delete", sceneController::deleteScene);
+
 
             // HTML routes
             app.get("/", ctx -> ctx.render("root.jte"));
