@@ -1,5 +1,13 @@
 SET search_path = embedded;
 
+-- Vue pour obtenir les intervenants des événements
+CREATE OR REPLACE VIEW vue_intervenant_evenement AS
+SELECT p.id, p.nom, p.prenom, p.adresse, p.num_tel, p.email, i.role, i.salaire, se.evenement_id FROM intervenant AS i
+    INNER JOIN personne AS p
+                ON p.id = i.personne_id
+    INNER JOIN intervenant_evenement AS se
+                ON i.personne_id = se.intervenant_id;
+
 -- Vue pour obtenir les événements avec leurs lieux
 CREATE OR REPLACE VIEW vue_evenement_lieu AS
 SELECT

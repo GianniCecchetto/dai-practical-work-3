@@ -70,24 +70,24 @@ public class Main {
             app.delete("/api/events/{id}", eventControllerApi::delete);
 
             // Stands routes
-            app.get("/stands/{id}", standController::getOne);
+            app.get("/events/{id}/stands", standController::getOne);
             app.get("/restaurants/{id}", restaurantController::getOne);
 
             //Scenes routes
-            app.get("/scenes", sceneController::showAllScenes);
-            app.get("/scenes/insert", sceneController::insertScene);
-            app.post("/scenes/insert", sceneController::handleInsertScene);
-            app.get("/scenes/{id}", sceneController::showDetails);
-            app.get("/scenes/{id}/modify", sceneController::modifyScene);
-            app.get("/scenes/{id}/delete", sceneController::deleteScene);
+            app.get("/events/{id}/scenes", sceneController::showAllScenes);
+            app.get("/events/{id}/scenes/insert", sceneController::insertScene);
+            app.post("/events/{id}/scenes/insert", sceneController::handleInsertScene);
+            app.get("/events/{id}/scenes/{scene_id}", sceneController::showDetails);
+            app.get("/events/{id}/scenes/{scene_id}/modify", sceneController::modifyScene);
+            app.get("/events/{id}/scenes/{scene_id}/delete", sceneController::deleteScene);
 
             // Spectators
-            app.get("/spectators/{id}", spectatorController::getAll);
-            app.get("/spectators/{id}/{spectator-id}", spectatorController::getOne);
+            app.get("/events/{id}/spectators/", spectatorController::getAll);
+            app.get("/spectators/{spectator_id}", spectatorController::getOne);
 
             // Helpers
-            app.get("/helpers", helperController::getAll);
-            app.get("/helpers/{id}", helperController::getOne);
+            app.get("/events/{id}/helpers", helperController::getAll);
+            app.get("/helpers/{helper_id}", helperController::getOne);
 
             // HTML routes
             app.get("/", ctx -> ctx.render("root.jte"));

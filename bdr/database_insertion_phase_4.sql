@@ -1,210 +1,113 @@
-SET search_path = embedded;
-
--- Inserer des donnees dans la table lieu
+-- Insérer des lieux
 INSERT INTO lieu (nom, adresse, NPA) VALUES
-('Palais des Congres', '1 Rue des Expositions', '75001'),
-('Centre Sportif', '10 Avenue du Stade', '75002'),
-('Parc des Expositions', '5 Boulevard des Jardins', '75003'),
-('Theatre Municipal', '3 Rue des Arts', '75004'),
-('Salle Polyvalente', '12 Rue Centrale', '75005'),
-('Place Centrale', 'Grand Place', '75006'),
-('Cinema Paradiso', '8 Rue du Cinema', '75007'),
-('Halle Municipale', '2 Avenue des Marches', '75008'),
-('Parc Urbain', 'Avenue des Fleurs', '75009'),
-('Stade National', 'Route du Stade', '75010');
+('Salle Polyvalente', 'Rue de la Gare 12', '1000'),
+('Parc des Étoiles', 'Avenue des Champs 24', '2000'),
+('Théâtre Antique', 'Chemin du Vieux Théâtre', '3000');
 
--- Inserer des donnees dans la table evenement
+-- Insérer des événements
 INSERT INTO evenement (nom, description, prix_entree, date_debut, date_fin, lieu_id) VALUES
-('Festival de Musique', 'Un festival avec des groupes locaux et internationaux.', 50.00, '2024-06-10', '2024-06-12', 1),
-('Salon de la Gastronomie', 'Decouvrez les meilleurs chefs et stands gastronomiques.', 20.00, '2024-06-15', '2024-06-17', 2),
-('Exposition d Art', 'Des artistes contemporains presentent leurs œuvres.', 10.00, '2024-06-20', '2024-06-22', 3),
-('Conference Tech', 'Un evenement pour les passionnes de technologie.', 100.00, '2024-07-01', '2024-07-03', 4),
-('Foire Agricole', 'evenement familial avec des activites agricoles.', 15.00, '2024-07-10', '2024-07-12', 5),
-('Marche de Noël', 'Vente de produits artisanaux et animations.', 5.00, '2024-12-01', '2024-12-24', 6),
-('Tournoi de Sports', 'Competitions entre equipes locales.', 0.00, '2024-08-15', '2024-08-17', 7),
-('Projection de Films', 'Films cultes projetes en plein air.', 10.00, '2024-09-10', '2024-09-12', 8),
-('Festival Enfantin', 'Animations pour enfants et familles.', 8.00, '2024-10-01', '2024-10-03', 9),
-('Concert Caritatif', 'Pour une cause solidaire.', 25.00, '2024-11-01', '2024-11-02', 10);
+('Festival de Jazz', 'Un festival annuel de jazz.', 50.00, '2025-06-01', '2025-06-03', 1),
+('Rock en Plein Air', 'Concert rock sous les étoiles.', 75.00, '2025-07-10', '2025-07-12', 2),
+('Soirée Classique', 'Une soirée dédiée à la musique classique.', 30.00, '2025-08-15', '2025-08-15', 3);
 
--- Inserer des donnees dans la table restaurateur
+-- Insérer des restaurateurs
 INSERT INTO restaurateur (nom, description) VALUES
-('Chez Leon', 'Cuisine francaise traditionnelle.'),
-('Pizza Bella', 'Pizzas artisanales et produits italiens.'),
-('Sushi Zen', 'Specialites japonaises de qualite.'),
-('Le Gourmet Bio', 'Produits bio et locaux.'),
-('Tacos Fiesta', 'Authentiques tacos mexicains.'),
-('Sweet Tooth', 'Desserts et patisseries.'),
-('Burger Town', 'Burgers faits maison.'),
-('Cafe du Coin', 'Boissons chaudes et snacks.'),
-('La Creperie', 'Crepes bretonnes salees et sucrees.'),
-('Brasserie Royale', 'Biere artisanale et plats copieux.');
+('Foodies Gourmet', 'Cuisine de qualité supérieure.'),
+('Burger Paradise', 'Les meilleurs burgers.'),
+('Vegan Treats', 'Options végétaliennes et saines.');
 
--- Inserer des donnees dans la table stand
+-- Insérer des stands
 INSERT INTO stand (taille, cout, restaurateur_id, evenement_id) VALUES
-(10.5, 200.00, 1, 1),
-(8.0, 150.00, 2, 1),
-(12.0, 250.00, 3, 2),
-(15.0, 300.00, 4, 2),
-(7.0, 100.00, 5, 3),
-(10.0, 200.00, 6, 3),
-(8.5, 180.00, 7, 4),
-(9.0, 190.00, 8, 4),
-(10.0, 210.00, 9, 5),
-(14.0, 280.00, 10, 5);
+(15.5, 500.00, 1, 1),
+(20.0, 600.00, 2, 2),
+(12.0, 400.00, 3, 3);
 
--- Inserer des donnees dans la table plat
+-- Insérer des plats
 INSERT INTO plat (nom, description, cout, restaurateur_id) VALUES
-('Coq au Vin', 'Poulet cuisine au vin rouge.', 15.00, 1),
-('Margherita', 'Pizza classique a la tomate et mozzarella.', 12.00, 2),
-('Sashimi de Saumon', 'Saumon frais servi cru.', 20.00, 3),
-('Salade Quinoa', 'Quinoa avec legumes bio.', 10.00, 4),
-('Tacos Al Pastor', 'Tacos de porc marine.', 8.00, 5),
-('eclair au Chocolat', 'Dessert patissier.', 5.00, 6),
-('Double Cheeseburger', 'Burger avec double viande.', 14.00, 7),
-('Club Sandwich', 'Sandwich classique.', 8.00, 8),
-('Crepe Sucree', 'Crepe au sucre et beurre.', 5.00, 9),
-('Choucroute', 'Plat alsacien traditionnel.', 18.00, 10);
+('Sandwich Gourmet', 'Un délicieux sandwich artisanal.', 15.00, 1),
+('Cheeseburger', 'Un burger classique avec fromage.', 12.00, 2),
+('Salade Vegan', 'Une salade saine et fraîche.', 10.00, 3);
 
--- Inserer des donnees dans la table boisson
+-- Insérer des boissons
 INSERT INTO boisson (nom, cout, contenance, restaurateur_id) VALUES
-('Vin Rouge', 5.00, 0.2, 1),
-('Coca-Cola', 2.00, 0.33, 2),
-('The Vert', 3.00, 0.25, 3),
-('Smoothie Bio', 4.00, 0.3, 4),
-('Margarita', 6.00, 0.2, 5),
-('Cafe', 2.50, 0.15, 6),
-('Limonade Maison', 3.00, 0.4, 7),
-('Chocolat Chaud', 3.50, 0.25, 8),
-('Cidre', 4.00, 0.5, 9),
-('Biere Blonde', 5.00, 0.5, 10);
+('Limonade Maison', 3.50, 0.5, 1),
+('Cola', 2.50, 0.33, 2),
+('Smoothie Mangue', 5.00, 0.4, 3);
 
--- Insertion des donnees pour la table groupe
-INSERT INTO groupe (nom, genre) VALUES
-('The Rockers', 'Rock'),
-('Jazz Lovers', 'Jazz'),
-('Classical Ensemble', 'Classique'),
-('Pop Stars', 'Pop'),
-('Metal Fury', 'Metal'),
-('Reggae Vibes', 'Reggae'),
-('Electro Beats', 'Electro'),
-('Country Roads', 'Country'),
-('Hip-Hop Crew', 'Hip-Hop'),
-('Latin Rhythms', 'Latino');
+-- Insérer des menus
+INSERT INTO menu (cout, restaurateur_id, plat_id, boisson_id) VALUES
+(18.00, 1, 1, 1),
+(14.00, 2, 2, 2),
+(13.00, 3, 3, 3);
 
--- Insertion des donnees pour la table scene
+-- Insérer des scènes
 INSERT INTO scene (capacite_max, plein_air, cout, evenement_id) VALUES
-(500, TRUE, 1000.00, 1),
-(300, FALSE, 800.00, 1),
-(400, TRUE, 1200.00, 2),
-(600, TRUE, 1500.00, 3),
-(200, FALSE, 500.00, 4),
-(350, TRUE, 700.00, 5),
-(450, FALSE, 1100.00, 6),
-(500, TRUE, 1300.00, 7),
-(250, FALSE, 600.00, 8),
-(300, TRUE, 900.00, 9);
+(500, FALSE, 1000.00, 1),
+(1000, TRUE, 1500.00, 2),
+(300, FALSE, 700.00, 3);
 
--- Insertion des donnees pour la table concert
+-- Insérer des groupes
+INSERT INTO groupe (nom, genre) VALUES
+('Jazz Masters', 'Jazz'),
+('Rock Rebels', 'Rock'),
+('Orchestre Symphonique', 'Classique');
+
+-- Insérer des concerts
 INSERT INTO concert (date, heure_debut, heure_fin, necessite_siege, scene_id, groupe_id) VALUES
-('2025-01-18', '18:00:00', '20:00:00', TRUE, 1, 1),
-('2025-01-18', '21:00:00', '23:00:00', FALSE, 1, 2),
-('2025-01-18', '15:00:00', '17:00:00', TRUE, 2, 3),
-('2025-01-18', '20:00:00', '22:00:00', FALSE, 2, 4),
-('2025-01-18', '19:00:00', '21:00:00', TRUE, 3, 5),
-('2025-01-18', '22:00:00', '23:59:00', FALSE, 3, 6),
-('2025-01-18', '16:00:00', '18:00:00', TRUE, 4, 7),
-('2025-01-18', '20:00:00', '22:00:00', FALSE, 4, 8),
-('2025-01-18', '14:00:00', '16:00:00', TRUE, 5, 9),
-('2025-01-18', '19:00:00', '21:00:00', FALSE, 5, 10);
+('2025-06-01', '18:00', '20:00', TRUE, 1, 1),
+('2025-07-10', '20:00', '22:00', FALSE, 2, 2),
+('2025-08-15', '19:30', '21:30', TRUE, 3, 3);
 
--- Insertion des donnees pour la table materiel
+-- Insérer des matériels
 INSERT INTO materiel (nom, description, cout) VALUES
-('Amplificateur', 'Amplificateur audio haute puissance.', 500.00),
-('Microphone', 'Microphone sans fil.', 150.00),
-('Projecteur', 'Projecteur lumineux.', 300.00),
-('Mixeur Audio', 'Table de mixage audio.', 400.00),
-('Baffle', 'Enceinte haute puissance.', 250.00),
-('Trepied', 'Support pour equipement.', 50.00),
-('Cables', 'Cables audio et electriques.', 30.00),
-('Batterie', 'Batterie pour instruments.', 200.00),
-('Scene Mobile', 'Structure pour concerts.', 1000.00),
-('Pupitre', 'Support pour partitions.', 100.00);
+('Projecteur', 'Projecteur LED haute luminosité.', 500.00),
+('Enceintes', 'Système audio haute qualité.', 1000.00),
+('Microphone', 'Micro sans fil.', 200.00);
 
--- Insertion des donnees pour la table materiel_concert
+-- Associer matériels aux concerts
 INSERT INTO materiel_concert (materiel_id, concert_id, nombre) VALUES
 (1, 1, 2),
-(2, 1, 5),
-(3, 2, 3),
-(4, 2, 1),
-(5, 3, 4),
-(6, 4, 2),
-(7, 5, 10),
-(8, 6, 1),
-(9, 7, 1),
-(10, 8, 3);
+(2, 2, 4),
+(3, 3, 3);
 
--- Insertion des donnees pour la table personne
+-- Insérer des personnes
 INSERT INTO personne (nom, prenom, adresse, num_tel, email) VALUES
-('Dupont', 'Jean', '1 Rue de Paris', '0601020304', 'jean.dupont@example.com'),
-('Martin', 'Sophie', '10 Avenue de Lyon', '0611121314', 'sophie.martin@example.com'),
-('Durand', 'Pierre', '5 Boulevard de Marseille', '0621222324', 'pierre.durand@example.com'),
-('Lemoine', 'Claire', '3 Rue de Nice', '0631323334', 'claire.lemoine@example.com'),
-('Roux', 'Paul', '12 Rue de Lille', '0641424344', 'paul.roux@example.com'),
-('Blanc', 'Lucie', '8 Rue de Bordeaux', '0651525354', 'lucie.blanc@example.com'),
-('Noir', 'Jacques', '2 Avenue de Toulouse', '0661626364', 'jacques.noir@example.com'),
-('Vert', 'Marie', '4 Rue de Nantes', '0671727374', 'marie.vert@example.com'),
-('Bleu', 'Antoine', '6 Rue de Rennes', '0681828384', 'antoine.bleu@example.com'),
-('Jaune', 'Julie', '7 Avenue de Strasbourg', '0691929394', 'julie.jaune@example.com');
+('Dupont', 'Jean', 'Rue de la Paix 5', '123456789', 'jean.dupont@example.com'),
+('Martin', 'Claire', 'Avenue des Fleurs 10', '987654321', 'claire.martin@example.com'),
+('Durand', 'Paul', 'Boulevard Central 3', '654321987', 'paul.durand@example.com');
 
--- Insertion des donnees pour la table artiste
+-- Insérer artistes
 INSERT INTO artiste (personne_id, cout, score_popularite, groupe_id) VALUES
-(1, 2000.00, 85.00, 1),
-(2, 1800.00, 78.00, 2),
-(3, 2200.00, 90.00, 3),
-(4, 2500.00, 92.00, 4),
-(5, 1900.00, 80.00, 5),
-(6, 1700.00, 75.00, 6),
-(7, 2100.00, 88.00, 7),
-(8, 2400.00, 91.00, 8),
-(9, 2000.00, 86.00, 9),
-(10, 2600.00, 95.00, 10);
+(1, 1000.00, 95.00, 1),
+(2, 1200.00, 90.00, 2),
+(3, 800.00, 85.00, 3);
 
--- Insertion des donnees pour la table spectateur
+-- Insérer spectateurs
 INSERT INTO spectateur (personne_id) VALUES
-(6), (7), (8), (9), (10);
+(1),
+(2),
+(3);
 
--- Insertion des donnees pour la table intervenant
-INSERT INTO intervenant (personne_id, role, salaire) VALUES
-(1, 'Technicien', 1500.00),
-(2, 'Organisateur', 2500.00),
-(3, 'Securite', 1800.00),
-(4, 'Logistique', 2000.00),
-(5, 'Communication', 2200.00);
-
--- Insertion des donnees pour la table siege
+-- Insérer sièges
 INSERT INTO siege (concert_id, place, categorie, prix, spectateur_id) VALUES
-(1, 1, 'VIP', 100.00, 6),
-(1, 2, 'Standard', 50.00, 7),
-(2, 1, 'Standard', 60.00, 8),
-(3, 1, 'VIP', 120.00, 9),
-(4, 1, 'Standard', 80.00, 10);
+(1, 1, 'VIP', 100.00, 1),
+(2, 2, 'Standard', 50.00, 2),
+(3, 3, 'Economique', 30.00, 3);
 
--- Insertion des donnees pour la table spectateur_evenement
+-- Associer spectateurs aux événements
 INSERT INTO spectateur_evenement (evenement_id, spectateur_id, prix) VALUES
-(1, 6, 50.00),
-(2, 7, 20.00),
-(3, 8, 10.00),
-(4, 9, 100.00),
-(5, 10, 15.00);
+(1, 1, 50.00),
+(2, 2, 75.00),
+(3, 3, 30.00);
 
-INSERT INTO menu (cout, restaurateur_id, plat_id, boisson_id) VALUES
-(15.00, 1, 1, 1),
-(12.00, 2, 2, 2),
-(20.00, 3, 3, 3),
-(10.00, 4, 4, 4),
-(8.00, 5, 5, 5),
-(5.00, 6, 6, 6),
-(14.00, 7, 7, 7),
-(8.00, 8, 8, 8),
-(5.00, 9, 9, 9),
-(18.00, 10, 10, 10);
+-- Insérer intervenants
+INSERT INTO intervenant (personne_id, role, salaire) VALUES
+(1, 'Technicien Lumière', 500.00),
+(2, 'Organisateur', 800.00),
+(3, 'Sécurité', 300.00);
+
+-- Associer intervenants aux événements
+INSERT INTO intervenant_evenement (intervenant_id, evenement_id) VALUES
+(1, 1),
+(2, 2),
+(3, 3);

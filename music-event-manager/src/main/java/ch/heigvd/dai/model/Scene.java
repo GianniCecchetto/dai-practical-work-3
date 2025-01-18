@@ -31,14 +31,15 @@ public record Scene(Integer id, Integer maxCapacity, Boolean openAir, Double cos
         }
     }
 
-    public static List<Scene> getAll(Connection connection) throws SQLException {
+    public static List<Scene> getAll(Connection connection, Integer eventId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
 
-        String sql = "SELECT id, capacite_max, plein_air, cout, evenement_id FROM scene;";
+        String sql = "SELECT id, capacite_max, plein_air, cout, evenement_id FROM scene WHERE evenement_id = ?;";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, eventId);
             ResultSet resultSet = stmt.executeQuery();
 
             List<Scene> scenes = new ArrayList<>();

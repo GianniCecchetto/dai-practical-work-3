@@ -1,6 +1,8 @@
 @import ch.heigvd.dai.model.Scene
+@import ch.heigvd.dai.model.Event
 @import java.util.List
 @param List<Scene> scenes
+@param Event event
 
 <html lang="fr">
 <head>
@@ -98,7 +100,7 @@
 </head>
 <body>
 <header>
-    <h1>Liste des Scènes</h1>
+    <h1>Liste des Scènes de l'événement ${event.name()}</h1>
 </header>
 <main>
     <div class="actions">
@@ -116,9 +118,9 @@
         <tbody>
         @for(Scene scene : scenes)
             <tr>
-                <td>${scene.eventId()}</td>
                 <td>${scene.maxCapacity()}</td>
                 <td>${scene.openAir() ? "Oui" : "Non"}</td>
+                <td>${scene.cost()}</td>
                 <td><button onclick="redirectToDetails(${scene.id()})">Détails</button></td>
             </tr>
         @endfor
@@ -131,7 +133,7 @@
 
 <script>
     function redirectToDetails(sceneId) {
-        const baseUrl = '/scenes/';
+        const baseUrl = '/events/${event.id()}/scenes/';
         window.location.href = baseUrl + sceneId;
     }
 

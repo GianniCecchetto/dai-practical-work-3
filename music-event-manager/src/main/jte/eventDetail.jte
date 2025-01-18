@@ -112,11 +112,11 @@
     </table>
     <table>
         <tr>
-            <td><a href="/scenes" class="button">Scenes</a></td>
+            <td><a href="/events/${event.id()}/scenes" class="button">Scenes</a></td>
             <td><a href="/events/${event.id()}/benefits" class="button">Benefits</a></td>
-            <td><a href="/spectators/${event.id()}" class="button">Spectators</a></td>
-            <td><a href="/helpers" class="button">Helpers</a></td>
-            <td><a href="/stands/${event.id()}" class="button">Stands</a></td>
+            <td><a href="/events/${event.id()}/spectators" class="button">Spectators</a></td>
+            <td><a href="/events/${event.id()}/helpers" class="button">Helpers</a></td>
+            <td><a href="/events/${event.id()}/stands" class="button">Stands</a></td>
         </tr>
     </table>
 </main>

@@ -6,6 +6,7 @@ import io.javalin.http.Context;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 public class SceneController {
@@ -16,13 +17,16 @@ public class SceneController {
     }
 
     public void showAllScenes(Context ctx) throws SQLException {
-        ctx.render("scenes.jte", Map.of("scenes", Scene.getAll(connection)));
+        Integer id = ctx.pathParamAsClass("id", Integer.class).get();
+
+        ctx.render("scenes.jte", Map.of("scenes", Scene.getAll(connection, id), "event", Event.getOne(connection, id)));
     }
 
     public void showDetails(Context ctx) throws SQLException {
         Integer id = ctx.pathParamAsClass("id", Integer.class).get();
+        Integer sceneId = ctx.pathParamAsClass("scene_id", Integer.class).get();
 
-        Scene scene = Scene.getOne(connection, id);
+        Scene scene = Scene.getOne(connection, sceneId);
 
         ctx.render("sceneDetail.jte", Map.of("scene", scene));
     }

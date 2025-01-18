@@ -39,6 +39,7 @@ public class EventController {
     public void deleteEvent(Context ctx) throws SQLException {
         ctx.render("deleteEvent.jte");
     }
+
     public void handleInsertEvent(Context ctx) throws SQLException {
         try {
             // Récupérer les données du formulaire

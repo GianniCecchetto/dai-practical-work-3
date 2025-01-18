@@ -21,8 +21,8 @@ public class SpectatorController {
         }
 
         public Context getOne(Context ctx) throws SQLException {
-            Integer id = Integer.parseInt(ctx.pathParam("spectator-id"));
+            Integer id = Integer.parseInt(ctx.pathParam("spectator_id"));
 
-            return ctx.render("spectator.jte", Map.of("spectator", Spectator.getSpectator(connection, id)));
+            return ctx.render("spectatorDetail.jte", Map.of("spectator", Spectator.getSpectator(connection, id)));
         }
 }

@@ -195,4 +195,12 @@ CREATE TABLE spectateur_evenement
     FOREIGN KEY (spectateur_id) REFERENCES spectateur (personne_id)
 );
 
--- Table billet_spectateur
+-- Table intervenant pour événement
+CREATE TABLE intervenant_evenement
+(
+    intervenant_id INT,
+    evenement_id INT,
+    PRIMARY KEY (intervenant_id, evenement_id),
+    FOREIGN KEY (evenement_id) REFERENCES evenement (id),
+    FOREIGN KEY (intervenant_id) REFERENCES intervenant (personne_id)
+);

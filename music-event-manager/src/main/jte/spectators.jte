@@ -29,7 +29,7 @@
             <tr>
                 <td>${spectator.firstName()}</td>
                 <td>${spectator.lastName()}</td>
-                <td><button><a href="/spectators/${spectator.eventId()}/${spectator.id()}">Details</a></button></td>
+                <td><button><a href="/spectators/${spectator.id()}">Details</a></button></td>
             </tr>
         @endfor
         </tbody>

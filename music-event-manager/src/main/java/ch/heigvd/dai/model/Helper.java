@@ -8,14 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public record Helper(Integer id, String firstName, String lastName, String address, String phoneNumber, String email, String role, Float salary) {
-    public static List<Helper> getHelpers(Connection connection) throws SQLException {
+    public static List<Helper> getAll(Connection connection, Integer eventId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
 
-        String sql = "SELECT * FROM intervenant AS i INNER JOIN personne AS p ON p.id = i.personne_id;";
+        String sql = "SELECT * FROM vue_intervenant_evenement WHERE evenement_id = ?";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            stmt.setInt(1, eventId);
             ResultSet resultSet = stmt.executeQuery();
 
             List<Helper> helpers = new ArrayList<>();
@@ -36,7 +37,7 @@ public record Helper(Integer id, String firstName, String lastName, String addre
         }
     }
 
-    public static Helper getHelper(Connection connection, Integer helperId) throws SQLException {
+    public static Helper getOne(Connection connection, Integer helperId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
