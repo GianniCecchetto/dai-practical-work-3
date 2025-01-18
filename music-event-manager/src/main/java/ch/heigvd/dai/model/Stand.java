@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public record Stand(Integer id, Float size, Float cout, Integer restaurantId) {
+public record Stand(Integer id, Float size, Float cout, Restaurant restaurant) {
     public static List<Stand> getStands(Connection connection, Integer evenementId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }
 
-        String sql = "SELECT * FROM stand WHERE evenement_id = ?;";
+        String sql = "SELECT s.id AS id, s.taille, s.cout, r.id AS restaurant_id, r.nom, r.description FROM stand AS s INNER JOIN restaurateur AS r ON s.restaurateur_id = r.id WHERE evenement_id = ?;";
 
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
             stmt.setInt(1, evenementId);
@@ -25,7 +25,11 @@ public record Stand(Integer id, Float size, Float cout, Integer restaurantId) {
                     resultSet.getInt("id"),
                     resultSet.getFloat("taille"),
                     resultSet.getFloat("cout"),
-                    resultSet.getInt("restaurateur_id")
+                    new Restaurant(
+                        resultSet.getInt("restaurant_id"),
+                        resultSet.getString("nom"),
+                        resultSet.getString("description")
+                    )
                 ));
             }
 

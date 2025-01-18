@@ -64,7 +64,7 @@ public class Main {
 
             // Stands routes
             app.get("/stands/{id}", standController::getOne);
-            app.get("/restaurateurs/{id}", restaurantController::getOne);
+            app.get("/restaurants/{id}", restaurantController::getOne);
 
             // HTML routes
             app.get("/", ctx -> ctx.render("root.jte"));

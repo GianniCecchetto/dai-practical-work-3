@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public record Restaurant(Integer id, String name, String description) {
-    public static Restaurant getRestaurateur(Connection connection, Integer restaurateurId) throws SQLException {
+    public static Restaurant getRestaurant(Connection connection, Integer restaurateurId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
         }

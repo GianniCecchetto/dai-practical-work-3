@@ -1,11 +1,8 @@
 @import ch.heigvd.dai.model.*
-@import ch.heigvd.dai.model.Plate
-@import ch.heigvd.dai.model.Restaurant
-@import ch.heigvd.dai.model.Menu
 @import java.util.List
 
 @param Restaurant restaurant
-@param List<ch.heigvd.dai.model.Plate> plates
+@param List<Plate> plates
 @param List<Soda> sodas
 @param List<Menu> menus
 
@@ -21,16 +18,14 @@
 <table>
     <thead>
     <tr>
-        <th>ID du plate</th>
-        <th>Nom du plate</th>
-        <th>Description du plate</th>
-        <th>Cout du plate</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Cout</th>
     </tr>
     </thead>
     <tbody>
     @for(Plate plate : plates)
         <tr>
-            <td>${plate.id()}</td>
             <td>${plate.name()}</td>
             <td>${plate.description()}</td>
             <td>${plate.cout()}</td>
@@ -42,16 +37,14 @@
 <table>
     <thead>
     <tr>
-        <th>ID de la soda</th>
-        <th>Nom de la soda</th>
-        <th>Contenu de la soda</th>
-        <th>Cout de la soda</th>
+        <th>Nom</th>
+        <th>Taille (ml)</th>
+        <th>Cout</th>
     </tr>
     </thead>
     <tbody>
-    @for(ch.heigvd.dai.model.Soda soda : sodas)
+    @for(Soda soda : sodas)
         <tr>
-            <td>${soda.id()}</td>
             <td>${soda.name()}</td>
             <td>${soda.content()}</td>
             <td>${soda.cout()}</td>
@@ -63,9 +56,9 @@
 <table>
     <thead>
     <tr>
-        <th>Nom du plate</th>
-        <th>Nom de la soda</th>
-        <th>Cout du menu</th>
+        <th>Plat</th>
+        <th>Boisson</th>
+        <th>Cout</th>
     </tr>
     </thead>
     <tbody>

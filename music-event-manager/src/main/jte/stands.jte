@@ -8,14 +8,13 @@
 </head>
 <body>
 <button onclick="window.history.back()">Back</button>
-<h1>Liste des Stands de l'evenement</h1>
+<h1>Liste des stands de l'évenement</h1>
 <table>
     <thead>
     <tr>
-        <th>ID du stand</th>
+        <th>Numéro du stand</th>
         <th>Taille du stand</th>
-        <th>Cout du stand</th>
-        <th>ID du restaurant</th>
+        <th>Nom du restaurant</th>
     </tr>
     </thead>
     <tbody>
@@ -23,10 +22,7 @@
         <tr>
             <td>${stand.id()}</td>
             <td>${stand.size()}</td>
-            <td>${stand.cout()}</td>
-            <td>
-                <a href="/restaurateurs/${stand.restaurantId()}">${stand.restaurantId()}</a>
-            </td>
+            <td><a href="/restaurants/${stand.restaurant().id()}">${stand.restaurant().name()}</a></td>
         </tr>
     @endfor
     </tbody>
