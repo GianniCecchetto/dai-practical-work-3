@@ -44,6 +44,8 @@ public class Main {
 
             SpectatorController spectatorController = new SpectatorController(conn);
 
+            HelperController helperController = new HelperController(conn);
+
             // Benefits routes
             app.get("/events/{id}/benefits", benefitController::getOne);
             app.get("/benefits", benefitController::getAll);
@@ -83,6 +85,9 @@ public class Main {
             app.get("/spectators/{id}", spectatorController::getAll);
             app.get("/spectators/{id}/{spectator-id}", spectatorController::getOne);
 
+            // Helpers
+            app.get("/helpers", helperController::getAll);
+            app.get("/helpers/{id}", helperController::getOne);
 
             // HTML routes
             app.get("/", ctx -> ctx.render("root.jte"));
