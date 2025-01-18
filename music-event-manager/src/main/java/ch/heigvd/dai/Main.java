@@ -42,6 +42,8 @@ public class Main {
 
             SceneController sceneController = new SceneController(conn);
 
+            SpectatorController spectatorController = new SpectatorController(conn);
+
             // Benefits routes
             app.get("/events/{id}/benefits", benefitController::getOne);
             app.get("/benefits", benefitController::getAll);
@@ -76,6 +78,10 @@ public class Main {
             app.get("/scenes/{id}", sceneController::showDetails);
             app.get("/scenes/{id}/modify", sceneController::modifyScene);
             app.get("/scenes/{id}/delete", sceneController::deleteScene);
+
+            // Spectators
+            app.get("/spectators/{id}", spectatorController::getAll);
+            app.get("/spectators/{id}/{spectator-id}", spectatorController::getOne);
 
 
             // HTML routes
