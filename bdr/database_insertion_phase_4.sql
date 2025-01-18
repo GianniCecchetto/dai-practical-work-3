@@ -1,45 +1,45 @@
 SET search_path = embedded;
 
--- Insérer des données dans la table lieu
+-- Inserer des donnees dans la table lieu
 INSERT INTO lieu (nom, adresse, NPA) VALUES
-('Palais des Congrès', '1 Rue des Expositions', '75001'),
+('Palais des Congres', '1 Rue des Expositions', '75001'),
 ('Centre Sportif', '10 Avenue du Stade', '75002'),
 ('Parc des Expositions', '5 Boulevard des Jardins', '75003'),
-('Théâtre Municipal', '3 Rue des Arts', '75004'),
+('Theatre Municipal', '3 Rue des Arts', '75004'),
 ('Salle Polyvalente', '12 Rue Centrale', '75005'),
 ('Place Centrale', 'Grand Place', '75006'),
-('Cinéma Paradiso', '8 Rue du Cinéma', '75007'),
-('Halle Municipale', '2 Avenue des Marchés', '75008'),
+('Cinema Paradiso', '8 Rue du Cinema', '75007'),
+('Halle Municipale', '2 Avenue des Marches', '75008'),
 ('Parc Urbain', 'Avenue des Fleurs', '75009'),
 ('Stade National', 'Route du Stade', '75010');
 
--- Insérer des données dans la table evenement
+-- Inserer des donnees dans la table evenement
 INSERT INTO evenement (nom, description, prix_entree, date_debut, date_fin, lieu_id) VALUES
 ('Festival de Musique', 'Un festival avec des groupes locaux et internationaux.', 50.00, '2024-06-10', '2024-06-12', 1),
-('Salon de la Gastronomie', 'Découvrez les meilleurs chefs et stands gastronomiques.', 20.00, '2024-06-15', '2024-06-17', 2),
-('Exposition d Art', 'Des artistes contemporains présentent leurs œuvres.', 10.00, '2024-06-20', '2024-06-22', 3),
-('Conférence Tech', 'Un événement pour les passionnés de technologie.', 100.00, '2024-07-01', '2024-07-03', 4),
-('Foire Agricole', 'Événement familial avec des activités agricoles.', 15.00, '2024-07-10', '2024-07-12', 5),
-('Marché de Noël', 'Vente de produits artisanaux et animations.', 5.00, '2024-12-01', '2024-12-24', 6),
-('Tournoi de Sports', 'Compétitions entre équipes locales.', 0.00, '2024-08-15', '2024-08-17', 7),
-('Projection de Films', 'Films cultes projetés en plein air.', 10.00, '2024-09-10', '2024-09-12', 8),
+('Salon de la Gastronomie', 'Decouvrez les meilleurs chefs et stands gastronomiques.', 20.00, '2024-06-15', '2024-06-17', 2),
+('Exposition d Art', 'Des artistes contemporains presentent leurs œuvres.', 10.00, '2024-06-20', '2024-06-22', 3),
+('Conference Tech', 'Un evenement pour les passionnes de technologie.', 100.00, '2024-07-01', '2024-07-03', 4),
+('Foire Agricole', 'evenement familial avec des activites agricoles.', 15.00, '2024-07-10', '2024-07-12', 5),
+('Marche de Noël', 'Vente de produits artisanaux et animations.', 5.00, '2024-12-01', '2024-12-24', 6),
+('Tournoi de Sports', 'Competitions entre equipes locales.', 0.00, '2024-08-15', '2024-08-17', 7),
+('Projection de Films', 'Films cultes projetes en plein air.', 10.00, '2024-09-10', '2024-09-12', 8),
 ('Festival Enfantin', 'Animations pour enfants et familles.', 8.00, '2024-10-01', '2024-10-03', 9),
 ('Concert Caritatif', 'Pour une cause solidaire.', 25.00, '2024-11-01', '2024-11-02', 10);
 
--- Insérer des données dans la table restaurateur
+-- Inserer des donnees dans la table restaurateur
 INSERT INTO restaurateur (nom, description) VALUES
-('Chez Léon', 'Cuisine française traditionnelle.'),
+('Chez Leon', 'Cuisine francaise traditionnelle.'),
 ('Pizza Bella', 'Pizzas artisanales et produits italiens.'),
-('Sushi Zen', 'Spécialités japonaises de qualité.'),
+('Sushi Zen', 'Specialites japonaises de qualite.'),
 ('Le Gourmet Bio', 'Produits bio et locaux.'),
 ('Tacos Fiesta', 'Authentiques tacos mexicains.'),
-('Sweet Tooth', 'Desserts et pâtisseries.'),
+('Sweet Tooth', 'Desserts et patisseries.'),
 ('Burger Town', 'Burgers faits maison.'),
-('Café du Coin', 'Boissons chaudes et snacks.'),
-('La Crêperie', 'Crêpes bretonnes salées et sucrées.'),
-('Brasserie Royale', 'Bière artisanale et plats copieux.');
+('Cafe du Coin', 'Boissons chaudes et snacks.'),
+('La Creperie', 'Crepes bretonnes salees et sucrees.'),
+('Brasserie Royale', 'Biere artisanale et plats copieux.');
 
--- Insérer des données dans la table stand
+-- Inserer des donnees dans la table stand
 INSERT INTO stand (taille, cout, restaurateur_id, evenement_id) VALUES
 (10.5, 200.00, 1, 1),
 (8.0, 150.00, 2, 1),
@@ -52,33 +52,33 @@ INSERT INTO stand (taille, cout, restaurateur_id, evenement_id) VALUES
 (10.0, 210.00, 9, 5),
 (14.0, 280.00, 10, 5);
 
--- Insérer des données dans la table plat
+-- Inserer des donnees dans la table plat
 INSERT INTO plat (nom, description, cout, restaurateur_id) VALUES
-('Coq au Vin', 'Poulet cuisiné au vin rouge.', 15.00, 1),
-('Margherita', 'Pizza classique à la tomate et mozzarella.', 12.00, 2),
+('Coq au Vin', 'Poulet cuisine au vin rouge.', 15.00, 1),
+('Margherita', 'Pizza classique a la tomate et mozzarella.', 12.00, 2),
 ('Sashimi de Saumon', 'Saumon frais servi cru.', 20.00, 3),
-('Salade Quinoa', 'Quinoa avec légumes bio.', 10.00, 4),
-('Tacos Al Pastor', 'Tacos de porc mariné.', 8.00, 5),
-('Éclair au Chocolat', 'Dessert pâtissier.', 5.00, 6),
+('Salade Quinoa', 'Quinoa avec legumes bio.', 10.00, 4),
+('Tacos Al Pastor', 'Tacos de porc marine.', 8.00, 5),
+('eclair au Chocolat', 'Dessert patissier.', 5.00, 6),
 ('Double Cheeseburger', 'Burger avec double viande.', 14.00, 7),
 ('Club Sandwich', 'Sandwich classique.', 8.00, 8),
-('Crêpe Sucrée', 'Crêpe au sucre et beurre.', 5.00, 9),
+('Crepe Sucree', 'Crepe au sucre et beurre.', 5.00, 9),
 ('Choucroute', 'Plat alsacien traditionnel.', 18.00, 10);
 
--- Insérer des données dans la table boisson
+-- Inserer des donnees dans la table boisson
 INSERT INTO boisson (nom, cout, contenance, restaurateur_id) VALUES
 ('Vin Rouge', 5.00, 0.2, 1),
 ('Coca-Cola', 2.00, 0.33, 2),
-('Thé Vert', 3.00, 0.25, 3),
+('The Vert', 3.00, 0.25, 3),
 ('Smoothie Bio', 4.00, 0.3, 4),
 ('Margarita', 6.00, 0.2, 5),
-('Café', 2.50, 0.15, 6),
+('Cafe', 2.50, 0.15, 6),
 ('Limonade Maison', 3.00, 0.4, 7),
 ('Chocolat Chaud', 3.50, 0.25, 8),
 ('Cidre', 4.00, 0.5, 9),
-('Bière Blonde', 5.00, 0.5, 10);
+('Biere Blonde', 5.00, 0.5, 10);
 
--- Insertion des données pour la table groupe
+-- Insertion des donnees pour la table groupe
 INSERT INTO groupe (nom, genre) VALUES
 ('The Rockers', 'Rock'),
 ('Jazz Lovers', 'Jazz'),
@@ -91,7 +91,7 @@ INSERT INTO groupe (nom, genre) VALUES
 ('Hip-Hop Crew', 'Hip-Hop'),
 ('Latin Rhythms', 'Latino');
 
--- Insertion des données pour la table scene
+-- Insertion des donnees pour la table scene
 INSERT INTO scene (capacite_max, plein_air, cout, evenement_id) VALUES
 (500, TRUE, 1000.00, 1),
 (300, FALSE, 800.00, 1),
@@ -104,33 +104,33 @@ INSERT INTO scene (capacite_max, plein_air, cout, evenement_id) VALUES
 (250, FALSE, 600.00, 8),
 (300, TRUE, 900.00, 9);
 
--- Insertion des données pour la table concert
-INSERT INTO concert (heure_debut, heure_fin, necessite_siege, scene_id, groupe_id) VALUES
-('18:00:00', '20:00:00', TRUE, 1, 1),
-('21:00:00', '23:00:00', FALSE, 1, 2),
-('15:00:00', '17:00:00', TRUE, 2, 3),
-('20:00:00', '22:00:00', FALSE, 2, 4),
-('19:00:00', '21:00:00', TRUE, 3, 5),
-('22:00:00', '23:59:00', FALSE, 3, 6),
-('16:00:00', '18:00:00', TRUE, 4, 7),
-('20:00:00', '22:00:00', FALSE, 4, 8),
-('14:00:00', '16:00:00', TRUE, 5, 9),
-('19:00:00', '21:00:00', FALSE, 5, 10);
+-- Insertion des donnees pour la table concert
+INSERT INTO concert (date, heure_debut, heure_fin, necessite_siege, scene_id, groupe_id) VALUES
+('2025-01-18', '18:00:00', '20:00:00', TRUE, 1, 1),
+('2025-01-18', '21:00:00', '23:00:00', FALSE, 1, 2),
+('2025-01-18', '15:00:00', '17:00:00', TRUE, 2, 3),
+('2025-01-18', '20:00:00', '22:00:00', FALSE, 2, 4),
+('2025-01-18', '19:00:00', '21:00:00', TRUE, 3, 5),
+('2025-01-18', '22:00:00', '23:59:00', FALSE, 3, 6),
+('2025-01-18', '16:00:00', '18:00:00', TRUE, 4, 7),
+('2025-01-18', '20:00:00', '22:00:00', FALSE, 4, 8),
+('2025-01-18', '14:00:00', '16:00:00', TRUE, 5, 9),
+('2025-01-18', '19:00:00', '21:00:00', FALSE, 5, 10);
 
--- Insertion des données pour la table materiel
+-- Insertion des donnees pour la table materiel
 INSERT INTO materiel (nom, description, cout) VALUES
 ('Amplificateur', 'Amplificateur audio haute puissance.', 500.00),
 ('Microphone', 'Microphone sans fil.', 150.00),
 ('Projecteur', 'Projecteur lumineux.', 300.00),
 ('Mixeur Audio', 'Table de mixage audio.', 400.00),
 ('Baffle', 'Enceinte haute puissance.', 250.00),
-('Trépied', 'Support pour équipement.', 50.00),
-('Câbles', 'Câbles audio et électriques.', 30.00),
+('Trepied', 'Support pour equipement.', 50.00),
+('Cables', 'Cables audio et electriques.', 30.00),
 ('Batterie', 'Batterie pour instruments.', 200.00),
-('Scène Mobile', 'Structure pour concerts.', 1000.00),
+('Scene Mobile', 'Structure pour concerts.', 1000.00),
 ('Pupitre', 'Support pour partitions.', 100.00);
 
--- Insertion des données pour la table materiel_concert
+-- Insertion des donnees pour la table materiel_concert
 INSERT INTO materiel_concert (materiel_id, concert_id, nombre) VALUES
 (1, 1, 2),
 (2, 1, 5),
@@ -143,7 +143,7 @@ INSERT INTO materiel_concert (materiel_id, concert_id, nombre) VALUES
 (9, 7, 1),
 (10, 8, 3);
 
--- Insertion des données pour la table personne
+-- Insertion des donnees pour la table personne
 INSERT INTO personne (nom, prenom, adresse, num_tel, email) VALUES
 ('Dupont', 'Jean', '1 Rue de Paris', '0601020304', 'jean.dupont@example.com'),
 ('Martin', 'Sophie', '10 Avenue de Lyon', '0611121314', 'sophie.martin@example.com'),
@@ -156,7 +156,7 @@ INSERT INTO personne (nom, prenom, adresse, num_tel, email) VALUES
 ('Bleu', 'Antoine', '6 Rue de Rennes', '0681828384', 'antoine.bleu@example.com'),
 ('Jaune', 'Julie', '7 Avenue de Strasbourg', '0691929394', 'julie.jaune@example.com');
 
--- Insertion des données pour la table artiste
+-- Insertion des donnees pour la table artiste
 INSERT INTO artiste (personne_id, cout, score_popularite, groupe_id) VALUES
 (1, 2000.00, 85.00, 1),
 (2, 1800.00, 78.00, 2),
@@ -169,19 +169,19 @@ INSERT INTO artiste (personne_id, cout, score_popularite, groupe_id) VALUES
 (9, 2000.00, 86.00, 9),
 (10, 2600.00, 95.00, 10);
 
--- Insertion des données pour la table spectateur
+-- Insertion des donnees pour la table spectateur
 INSERT INTO spectateur (personne_id) VALUES
 (6), (7), (8), (9), (10);
 
--- Insertion des données pour la table intervenant
+-- Insertion des donnees pour la table intervenant
 INSERT INTO intervenant (personne_id, role, salaire) VALUES
 (1, 'Technicien', 1500.00),
 (2, 'Organisateur', 2500.00),
-(3, 'Sécurité', 1800.00),
+(3, 'Securite', 1800.00),
 (4, 'Logistique', 2000.00),
 (5, 'Communication', 2200.00);
 
--- Insertion des données pour la table siege
+-- Insertion des donnees pour la table siege
 INSERT INTO siege (concert_id, place, categorie, prix, spectateur_id) VALUES
 (1, 1, 'VIP', 100.00, 6),
 (1, 2, 'Standard', 50.00, 7),
@@ -189,10 +189,22 @@ INSERT INTO siege (concert_id, place, categorie, prix, spectateur_id) VALUES
 (3, 1, 'VIP', 120.00, 9),
 (4, 1, 'Standard', 80.00, 10);
 
--- Insertion des données pour la table spectateur_evenement
+-- Insertion des donnees pour la table spectateur_evenement
 INSERT INTO spectateur_evenement (evenement_id, spectateur_id, prix) VALUES
 (1, 6, 50.00),
 (2, 7, 20.00),
 (3, 8, 10.00),
 (4, 9, 100.00),
 (5, 10, 15.00);
+
+INSERT INTO menu (cout, restaurateur_id, plat_id, boisson_id) VALUES
+(15.00, 1, 1, 1),
+(12.00, 2, 2, 2),
+(20.00, 3, 3, 3),
+(10.00, 4, 4, 4),
+(8.00, 5, 5, 5),
+(5.00, 6, 6, 6),
+(14.00, 7, 7, 7),
+(8.00, 8, 8, 8),
+(5.00, 9, 9, 9),
+(18.00, 10, 10, 10);

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public record Soda(Integer id, String name, Float cout, Float content) {
+public record Soda(Integer id, String name, Float cost, Float content) {
     public static List<Soda> getBoissons(Connection connection, Integer restaurateurId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");
@@ -22,7 +22,7 @@ public record Soda(Integer id, String name, Float cout, Float content) {
             while (resultSet.next()) {
                 sodas.add(new Soda(
                         resultSet.getInt("id"),
-                        resultSet.getString("name"),
+                        resultSet.getString("nom"),
                         resultSet.getFloat("cout"),
                         resultSet.getFloat("contenance")
                 ));
@@ -45,7 +45,7 @@ public record Soda(Integer id, String name, Float cout, Float content) {
             resultSet.next();
             return new Soda(
                     resultSet.getInt("id"),
-                    resultSet.getString("name"),
+                    resultSet.getString("nom"),
                     resultSet.getFloat("cout"),
                     resultSet.getFloat("contenance")
             );

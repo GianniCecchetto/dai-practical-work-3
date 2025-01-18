@@ -20,7 +20,7 @@ public record Restaurant(Integer id, String name, String description) {
             resultSet.next();
             return new Restaurant(
                     resultSet.getInt("id"),
-                    resultSet.getString("name"),
+                    resultSet.getString("nom"),
                     resultSet.getString("description")
             );
         }

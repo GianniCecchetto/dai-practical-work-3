@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public record Menu(Float cout, Plate plate, Soda soda) {
+public record Menu(Float cost, Plate plate, Soda soda) {
     public static List<Menu> getMenus(Connection connection, Integer restaurateurId) throws SQLException {
         if (connection == null || connection.isClosed()) {
             throw new SQLException("La connexion à la base de données est fermée ou non initialisée.");

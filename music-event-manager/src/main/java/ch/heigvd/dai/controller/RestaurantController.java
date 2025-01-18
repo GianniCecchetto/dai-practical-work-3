@@ -20,6 +20,6 @@ public class RestaurantController {
     public Context getOne(Context ctx) throws SQLException {
         Integer id = ctx.pathParamAsClass("id", Integer.class).get();
 
-        return ctx.render("restaurant.jte", Map.of("restaurant", Restaurant.getRestaurant(connection, id), "plats", Plate.getPlats(connection, id), "boissons", Soda.getBoissons(connection, id), "menus", Menu.getMenus(connection, id)));
+        return ctx.render("restaurant.jte", Map.of("restaurant", Restaurant.getRestaurant(connection, id), "plates", Plate.getPlats(connection, id), "sodas", Soda.getBoissons(connection, id), "menus", Menu.getMenus(connection, id)));
     }
 }
