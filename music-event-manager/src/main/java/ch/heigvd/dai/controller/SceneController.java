@@ -41,19 +41,14 @@ public class SceneController {
 
     public void handleInsertScene(Context ctx) throws SQLException {
         try {
-            // Récupérer les données du formulaire
             Integer maxCapacity = ctx.formParamAsClass("maxCapacity", Integer.class).get();
             Boolean openAir = ctx.formParam("openAir") != null; // Checkbox renvoie null si non cochée
             Double cost = ctx.formParamAsClass("cost", Double.class).get();
             Integer eventId = ctx.formParamAsClass("eventId", Integer.class).get();
 
-            // Créer une nouvelle scène
             Scene scene = new Scene(null, maxCapacity, openAir, cost, eventId);
-
-            // Insérer la scène dans la base de données
             Scene.create(connection, scene);
 
-            // Rediriger vers la liste des scènes
             ctx.redirect("/scenes");
         } catch (Exception e) {
             ctx.status(400).result("Erreur lors de l'insertion de la scène : " + e.getMessage());

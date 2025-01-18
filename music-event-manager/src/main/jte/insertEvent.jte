@@ -83,8 +83,7 @@
     <h1>Ajouter un Événement</h1>
 </header>
 <main>
-    <h1>Formulaire d'Ajout</h1>
-    <form name="createForm">
+    <form action="/events/insert" method="post">
         <label for="name">Nom de l'Événement :</label>
         <input type="text" id="name" name="name" placeholder="Nom de l'événement" required>
 
@@ -95,10 +94,10 @@
         <input type="number" id="entryPrice" name="entryPrice" step="0.01" required>
 
         <label for="beginning">Date de Début :</label>
-        <input type="datetime-local" id="beginning" name="beginning" required>
+        <input type="date" id="beginning" name="beginning" required>
 
         <label for="end">Date de Fin :</label>
-        <input type="datetime-local" id="end" name="end" required>
+        <input type="date" id="end" name="end" required>
 
         <label for="locationId">Lieu :</label>
         <select id="locationId" name="locationId">
@@ -106,33 +105,8 @@
                 <option value="${location.id()}">${location.toString()}</option>
             @endfor
         </select>
-
-        <button onclick="insertEvent();">Ajouter l'Événement</button>
+        <button type="submit">Créer</button>
     </form>
 </main>
 </body>
-<script>
-async function insertEvent() {
-    try{
-        const response = await fetch("/api/events", {
-            method: "POST",
-            body: JSON.stringify({ name: document.createForm.name.value,
-                description: document.createForm.description.value,
-                entryPrice: document.createForm.entryPrice.value,
-                beginning: document.createForm.beginning.value,
-                end: document.createForm.end.value,
-                locationId: document.createForm.locationId.value,
-            }),
-        });
-        if (!response.ok) {
-            throw new Error(`Response status: ` + response.status);
-        }
-
-        const json = await response.json();
-        console.log(json);
-    } catch (error) {
-        console.error(error.message);
-    }
-}
-</script>
 </html>

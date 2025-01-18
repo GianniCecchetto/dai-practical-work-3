@@ -72,7 +72,7 @@ public record Event(Integer id, String name, String description, Double entryPri
             stmt.setDate(4, event.beginning());
             stmt.setDate(5, event.end());
             stmt.setInt(6, event.locationId());
-            stmt.executeQuery();
+            stmt.executeUpdate();
         }
     }
 

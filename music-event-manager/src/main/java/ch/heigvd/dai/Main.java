@@ -53,6 +53,7 @@ public class Main {
             app.get("/group_event/{id}", groupEventController::getAll);
             app.get("/events", eventController::showAllEvents);
             app.get("/events/insert", eventController::insertEvent);
+            app.post("/events/insert", eventController::handleInsertEvent);
             app.get("/events/{id}", eventController::showDetails);
             app.get("/events/{id}/modify", eventController::modifyEvent);
             app.get("/events/{id}/delete", eventController::deleteEvent);
