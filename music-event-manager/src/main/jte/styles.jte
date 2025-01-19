@@ -82,5 +82,17 @@ button {
 
 button:hover {
     transform: translateY(-2px);
+    background-color: #ff4400;
+}
+
+button:active {
+    background-color: #e63900;
+    transform: translateY(0);
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
 }
 </style>
