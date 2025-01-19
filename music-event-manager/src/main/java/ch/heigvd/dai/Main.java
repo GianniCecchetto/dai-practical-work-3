@@ -80,6 +80,7 @@ public class Main {
             app.get("/events/{id}/scenes/{scene_id}", sceneController::showDetails);
             app.get("/events/{id}/scenes/{scene_id}/modify", sceneController::modifyScene);
             app.get("/events/{id}/scenes/{scene_id}/delete", sceneController::deleteScene);
+            app.get("/events/{id}/scenes/{scene_id}/equipement", sceneController::showEquipement);
 
             // Spectators
             app.get("/events/{id}/spectators/", spectatorController::getAll);

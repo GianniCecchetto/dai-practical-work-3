@@ -2,6 +2,7 @@ package ch.heigvd.dai.controller;
 
 import ch.heigvd.dai.model.Scene;
 import ch.heigvd.dai.model.Event;
+import ch.heigvd.dai.model.Equipement;
 import io.javalin.http.Context;
 
 import java.sql.Connection;
@@ -30,6 +31,18 @@ public class SceneController {
 
         ctx.render("sceneDetail.jte", Map.of("scene", scene));
     }
+
+    public void showEquipement(Context ctx) throws SQLException {
+        Integer sceneId = ctx.pathParamAsClass("scene_id", Integer.class).get();
+
+        Scene scene = Scene.getOne(connection, sceneId);
+
+        List<Equipement> equipements = Equipement.getEquipementsBySceneId(connection, sceneId);
+
+        ctx.render("sceneEquipement.jte", Map.of("scene", scene, "equipements", equipements));
+    }
+
+
 
     public void insertScene(Context ctx) throws SQLException {
         ctx.render("insertScene.jte", Map.of("events", Event.getAll(connection)));

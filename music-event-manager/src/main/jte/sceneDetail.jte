@@ -106,6 +106,7 @@
             <td><a href="/events" class="button">Retour aux Événements</a></td>
             <td><a href="/scenes/${scene.id()}/modify" class="button">Modifier la Scène</a></td>
             <td><a href="/scenes/${scene.id()}/delete" class="button">Supprimer la Scène</a></td>
+            <td><a href="/events/${scene.eventId()}/scenes/${scene.id()}/equipement" class="button">Equipement</a></td>
         </tr>
     </table>
 </main>

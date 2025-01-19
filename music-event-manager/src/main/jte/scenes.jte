@@ -138,7 +138,7 @@
     }
 
     function redirectToAddScene() {
-        const addSceneUrl = '/scenes/insert';
+        const addSceneUrl = '/events/${event.id()}/scenes/insert';
         window.location.href = addSceneUrl;
     }
 </script>
