@@ -118,9 +118,9 @@
         <tbody>
         @for(Scene scene : scenes)
             <tr>
+                <td>${event.name()}</td>
                 <td>${scene.maxCapacity()}</td>
                 <td>${scene.openAir() ? "Oui" : "Non"}</td>
-                <td>${scene.cost()}</td>
                 <td><button onclick="redirectToDetails(${scene.id()})">Détails</button></td>
             </tr>
         @endfor
