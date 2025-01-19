@@ -1,3 +1,5 @@
+set search_path = embedded;
+
 -- Insérer des lieux
 INSERT INTO lieu (nom, adresse, NPA) VALUES
 ('Salle Polyvalente', 'Rue de la Gare 12', '1000'),
