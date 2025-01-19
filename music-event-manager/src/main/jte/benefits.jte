@@ -6,15 +6,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Groupes des Événements</title>
+    <title>Recettes des Evenements</title>
     @template.styles()
 </head>
-<head>
-    <title>Recettes des Evenements</title>
-</head>
+<header>
+    <button class="back" onclick="window.history.back()">Back</button>
+    <h1>Recettes des Evenements</h1>
+</header>
 <body>
-<button onclick="window.history.back()">Back</button>
-<h1>Liste des Recettes des Evenements</h1>
+<main>
 <table>
     <thead>
     <tr>
@@ -28,7 +28,7 @@
     @for(Benefit benefit : benefits)
     <tr>
         <td>
-            <a href="/benefits/${benefit.id()}">${benefit.id()}</a>
+            <a href="/events/${benefit.id()}/benefits">${benefit.id()}</a>
         </td>
         <td>${benefit.name()}</td>
         <td>${benefit.benefitStand()}</td>
@@ -37,5 +37,6 @@
     @endfor
     </tbody>
 </table>
+</main>
 </body>
 </html>
