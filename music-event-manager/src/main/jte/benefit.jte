@@ -9,7 +9,6 @@
     @template.styles()
 </head>
 <header>
-    <button class="back" onclick="window.history.back()">Back</button>
     <h1>Recette</h1>
 </header>
 <body>

@@ -12,7 +12,6 @@
 </head>
 <body>
 <header>
-    <button class="back" onclick="window.history.back()">Back</button>
     <h1>Spectateurs</h1>
 </header>
 <main>

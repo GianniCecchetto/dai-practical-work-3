@@ -11,7 +11,6 @@
 </head>
 <body>
 <header>
-    <button class="back" onclick="window.history.back()">Back</button>
     <h1>${spectator.firstName()} ${spectator.lastName()}</h1>
 </header>
 <main>

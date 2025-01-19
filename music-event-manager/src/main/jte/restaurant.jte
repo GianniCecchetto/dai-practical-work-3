@@ -15,7 +15,6 @@
 </head>
 <body>
 <header>
-    <button class="back" onclick="window.history.back()">Back</button>
     <h1>${restaurant.name()}</h1>
     <h2>${restaurant.description()}</h2>
 </header>

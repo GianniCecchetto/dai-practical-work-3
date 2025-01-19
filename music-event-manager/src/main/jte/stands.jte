@@ -11,7 +11,6 @@
 </head>
 <body>
 <header>
-    <button class="back" onclick="window.history.back()">Back</button>
     <h1>Liste des stands de l'evenement</h1>
 </header>
 <main>
