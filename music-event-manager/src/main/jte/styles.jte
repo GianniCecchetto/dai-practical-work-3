@@ -63,12 +63,6 @@ a {
     text-decoration: none;
 }
 
-.back {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-}
-
 button {
     padding: 10px 15px;
     background-color: #ea710c;
@@ -90,9 +84,26 @@ button:active {
     transform: translateY(0);
 }
 
-.actions {
+form {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input, textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
 }
 </style>
